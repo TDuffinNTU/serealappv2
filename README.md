@@ -1,16 +1,11 @@
-# serealappv2
+# Sereal
 
 A new Flutter project.
 
+A Food diary and habit/task tracker app for people fed up with fitness and diet culture rubbish.
+
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* Requires flutter 3.7.12.
+* Clone the repo and run with `flutter run` (or within your IDE of choice!)
+* Future will likely have build_runner tasks for freezed and other libraries. 
