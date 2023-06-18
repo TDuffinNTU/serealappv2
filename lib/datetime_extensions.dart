@@ -7,5 +7,5 @@ extension DateTimeExtensions on DateTime {
         microsecond: 0,
       );
 
-  String asKey() => this.dateOnly().toIso8601String();
+  String asDatabaseKey() => this.dateOnly().toIso8601String();
 }
