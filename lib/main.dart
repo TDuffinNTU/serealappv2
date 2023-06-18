@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
-import 'package:jiffy/jiffy.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:serealappv2/models/services/logs_service.dart';
+import 'package:serealappv2/models/types/daily_log.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -26,44 +29,53 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends ConsumerStatefulWidget {
   const MyHomePage({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  ConsumerState<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
-  DateTime selectedDate = DateTime.now();
-  int todayIndex = 2;
-  List<String> pages = ['0', '1', Jiffy.now().MMMMEEEEd, '3', '4'];
-  CarouselController controller = CarouselController();
+class _MyHomePageState extends ConsumerState<MyHomePage> {
+  int index = -1;
 
-  void moveToDate(int index) {
-    setState(() {
-      selectedDate = Jiffy.now().add(days: index - todayIndex).dateTime;
-      if (index == 0) addAtStart();
-    });
-  }
+  Future<void> addRecord() async {
+    // today's index
+    int index = ref.read(logsServiceProvider.notifier).todayIndex;
 
-  Future<void> addAtStart() async {
-    await Future.delayed(const Duration(milliseconds: 300));
-    todayIndex++;
-    pages = [Jiffy.now().add(days: -todayIndex).MMMMEEEEd, ...pages];
-    controller.jumpToPage(1);
-  }
+    // create log
+    DailyLog newLog = DailyLog.defaults(
+      date: DateTime.now().add(
+        Duration(
+            days: index +
+                ref
+                    .read(logsServiceProvider)
+                    .whenData((value) => value.length)
+                    .value!),
+      ),
+    );
 
-  void addAtEnd() {
-    setState(() {
-      pages.add(Jiffy.now().add(days: pages.length - todayIndex).MMMMEEEEd);
-    });
+    ref.read(logsServiceProvider.notifier).createOrUpdateLog(newLog);
   }
 
   @override
   Widget build(BuildContext context) {
+    final logsAsync = ref.watch(logsServiceProvider);
+    final logsNotifier = ref.read(logsServiceProvider.notifier);
+
     return Scaffold(
+      drawer: Drawer(
+        child: TextButton(
+          child: Text('Clear database'),
+          onPressed: () {
+            logsNotifier.clearAllLogs();
+            index = -1;
+            ref.invalidate(logsServiceProvider);
+          },
+        ),
+      ),
       appBar: AppBar(
         elevation: 10,
         title: Text(widget.title),
@@ -78,42 +90,40 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
         ],
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              Jiffy.parseFromDateTime(selectedDate)
-                      .isSame(Jiffy.now(), unit: Unit.day)
-                  ? 'Today'
-                  : Jiffy.parseFromDateTime(selectedDate).MMMMEEEEd,
-            ),
-            FlutterCarousel(
-              items: List.generate(
-                  pages.length,
-                  (index) => Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: Card(
-                          child: Center(
-                            child: Text(
-                              pages[index],
-                            ),
-                          ),
-                        ),
-                      )),
-              options: CarouselOptions(
-                initialPage: todayIndex,
-                onPageChanged: (index, _) => moveToDate(index),
-                enlargeStrategy: CenterPageEnlargeStrategy.scale,
-                controller: controller,
-                showIndicator: false,
+        child: logsAsync.when(
+          error: (error, stacktrace) => Text(
+            'ERROR: ${error}, ${stacktrace}',
+          ),
+          loading: () => SpinKitRotatingCircle(
+            color: Colors.deepPurpleAccent,
+          ),
+          data: (logs) => Column(
+            children: [
+              Text(logs[index == -1 ? logsNotifier.todayIndex : index].id),
+              FlutterCarousel(
+                items: List.generate(
+                  logs.length,
+                  (i) => Card(
+                    child: Text(
+                      logs[i].date.toString(),
+                    ),
+                  ),
+                ),
+                options: CarouselOptions(
+                  initialPage: logsNotifier.todayIndex,
+                  onPageChanged: (newIndex, _) =>
+                      setState(() => index = newIndex),
+                  enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                  showIndicator: false,
+                ),
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: addAtEnd,
-        tooltip: 'Increment',
+        onPressed: !ref.watch(logsServiceProvider).isLoading ? addRecord : null,
+        tooltip: 'Add',
         child: const Icon(Icons.add),
       ),
     );

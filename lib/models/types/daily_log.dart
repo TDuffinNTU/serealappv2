@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:serealappv2/datetime_extensions.dart';
+import 'package:uuid/uuid.dart';
 
 import 'todo.dart';
 import 'meal.dart';
@@ -16,12 +17,13 @@ class DailyLog with _$DailyLog {
     required List<Todo> todos,
     required Note note,
     required DateTime date,
+    required String id,
   }) = _DailyLog;
 
   factory DailyLog.fromJson(Map<String, dynamic> json) =>
       _$DailyLogFromJson(json);
 
-  factory DailyLog.defaults(DateTime? date) => DailyLog(
+  factory DailyLog.defaults({DateTime? date}) => DailyLog(
         meals: [
           Meal.defaults('Meal 1'),
           Meal.defaults('Meal 2'),
@@ -37,6 +39,7 @@ class DailyLog with _$DailyLog {
         note: const Note(
           content: 'Empty note',
         ),
-        date: date ?? DateTime.now().dateOnly(),
+        date: date != null ? date.dateOnly : DateTime.now().dateOnly,
+        id: Uuid().v1(),
       );
 }

@@ -1,5 +1,5 @@
 extension DateTimeExtensions on DateTime {
-  DateTime dateOnly() => this.copyWith(
+  DateTime get dateOnly => this.copyWith(
         hour: 0,
         second: 0,
         minute: 0,
@@ -7,5 +7,5 @@ extension DateTimeExtensions on DateTime {
         microsecond: 0,
       );
 
-  String asDatabaseKey() => this.dateOnly().toIso8601String();
+  String get databaseType => this.dateOnly.toIso8601String();
 }
