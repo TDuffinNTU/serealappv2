@@ -12,23 +12,29 @@ class LogsService extends _$LogsService {
 
   late MimirIndex _database;
 
-  /// Index of today's date. -1 if loading.
-  int get todayIndex => state.hasValue
-      ? state.value!
-          .indexWhere((element) => element.date == DateTime.now().dateOnly)
-      : -1;
+  /// Index of today's date. null if loading.
+  int? get todayIndex => state.asData?.valueOrNull
+      ?.indexWhere((element) => element.date == DateTime.now().dateOnly);
 
   /// Length of state array. -1 if loading.
   int get length => state.hasValue ? state.value!.length : -1;
 
+  /// Returns whether a date is present in the db.
+  Future<bool> _recordAtDate(DateTime date) async => (await _database.search(
+          filter:
+              Mimir.where('date', isEqualTo: date.dateOnly.toIso8601String())))
+      .isNotEmpty;
+
   Future<List<DailyLog>> _fetchLogs() async {
     // add a new log if none is available
-    if ((await _database.search(
-      filter: Mimir.where('date',
-          isEqualTo: DateTime.now().dateOnly.toIso8601String()),
-    ))
-        .isEmpty) {
+    if (!await _recordAtDate(DateTime.now())) {
       await _database.addDocument(DailyLog.defaults().toJson());
+    }
+
+    // add a new log if none is available for tomorrow
+    if (!await _recordAtDate(DateTimeExtensions.tomorrow())) {
+      await _database.addDocument(
+          DailyLog.defaults(date: DateTimeExtensions.tomorrow()).toJson());
     }
 
     // sort by date and return
@@ -88,6 +94,7 @@ class LogsService extends _$LogsService {
     });
   }
 
+  /// Deletes all the logs, and then re-inits the db.
   Future<void> clearAllLogs() async {
     state = await AsyncValue.guard(() async {
       await _database.deleteAllDocuments();

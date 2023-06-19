@@ -39,11 +39,11 @@ class MyHomePage extends ConsumerStatefulWidget {
 }
 
 class _MyHomePageState extends ConsumerState<MyHomePage> {
-  int index = -1;
+  int? index;
 
   Future<void> addRecord() async {
     // today's index
-    int index = ref.read(logsServiceProvider.notifier).todayIndex;
+    int index = ref.read(logsServiceProvider.notifier).todayIndex!;
 
     // create log
     DailyLog newLog = DailyLog.defaults(
@@ -67,13 +67,21 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
 
     return Scaffold(
       drawer: Drawer(
-        child: TextButton(
-          child: Text('Clear database'),
-          onPressed: () {
-            logsNotifier.clearAllLogs();
-            index = -1;
-            ref.invalidate(logsServiceProvider);
-          },
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              TextButton(
+                child: Text('Clear database'),
+                onPressed: () {
+                  logsNotifier.clearAllLogs();
+                  index = null;
+                  ref.invalidate(logsServiceProvider);
+                },
+              ),
+            ],
+          ),
         ),
       ),
       appBar: AppBar(
@@ -99,7 +107,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           ),
           data: (logs) => Column(
             children: [
-              Text(logs[index == -1 ? logsNotifier.todayIndex : index].id),
+              Text(logs[index ?? logsNotifier.todayIndex ?? 0].id),
               FlutterCarousel(
                 items: List.generate(
                   logs.length,
@@ -110,7 +118,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
                   ),
                 ),
                 options: CarouselOptions(
-                  initialPage: logsNotifier.todayIndex,
+                  initialPage: logsNotifier.todayIndex ?? 0,
                   onPageChanged: (newIndex, _) =>
                       setState(() => index = newIndex),
                   enlargeStrategy: CenterPageEnlargeStrategy.scale,
