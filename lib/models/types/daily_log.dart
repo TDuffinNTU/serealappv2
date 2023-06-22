@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:serealappv2/datetime_extensions.dart';
+import 'package:serealappv2/utils/datetime_extensions.dart';
 import 'package:uuid/uuid.dart';
 
 import 'todo.dart';
