@@ -34,23 +34,23 @@ class _SerealNavigationBarState extends State<SerealNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      items: [
-        BottomNavigationBarItem(
+    return NavigationBar(
+      destinations: [
+        NavigationDestination(
           label: 'Notes',
           icon: Icon(Icons.sticky_note_2),
         ),
-        BottomNavigationBarItem(
+        NavigationDestination(
           label: 'Today',
           icon: Icon(Icons.calendar_month),
         ),
-        BottomNavigationBarItem(
+        NavigationDestination(
           label: 'History',
           icon: Icon(Icons.history),
         ),
       ],
-      onTap: selectTab,
-      currentIndex: selectedTab,
+      onDestinationSelected: selectTab,
+      selectedIndex: selectedTab,
     );
   }
 }

@@ -40,7 +40,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return SerealScaffold(
       appBarAction: IconButton(
         icon: Icon(Icons.settings),
-        onPressed: null,
+        onPressed: () {},
       ),
       title: 'Welcome!',
       body: selectedTab,

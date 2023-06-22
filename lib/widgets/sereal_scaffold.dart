@@ -18,6 +18,8 @@ class SerealScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 1,
+        centerTitle: true,
         actions: appBarAction == null ? null : [appBarAction!],
         title: Text(title),
       ),
