@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:serealappv2/models/services/data/database_service.dart';
+import 'package:serealappv2/models/services/tabs/home_tab_service.dart';
 import 'package:serealappv2/widgets/sereal_navigation_bar.dart';
 import 'package:serealappv2/widgets/sereal_scaffold.dart';
 
@@ -15,13 +17,13 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
-  List<Widget> homeScreenTabs = [
+  final List<Widget> homeScreenTabs = [
     HomeScreenNotesTab(),
     HomeScreenTodayTab(),
     HomeScreenHistoryTab(),
   ];
 
-  late Widget selectedTab;
+  late Widget selectedTab = homeScreenTabs[1];
 
   void selectTab(int tab) {
     setState(() {
@@ -30,17 +32,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    selectedTab = homeScreenTabs[1];
-  }
-
-  @override
   Widget build(BuildContext context) {
     return SerealScaffold(
       appBarAction: IconButton(
-        icon: Icon(Icons.settings),
-        onPressed: () {},
+        icon: Icon(Icons.delete_forever),
+        onPressed: () async {
+          (await ref.read(getDatabaseProvider.future)).deleteAllDocuments();
+        },
       ),
       title: 'Welcome!',
       body: selectedTab,
