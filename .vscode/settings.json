@@ -1,8 +1,4 @@
 {
-    "cSpell.words": [
-        "MMMMEEE",
-        "Sereal",
-        "serealappv",
-        "todos"
-    ]
+    "dart.lineLength": 100,
+    "editor.rulers": [100]
 }

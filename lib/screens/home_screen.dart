@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:serealappv2/models/services/data/database_service.dart';
-import 'package:serealappv2/models/services/tabs/home_tab_service.dart';
+import 'package:serealappv2/models/providers/database.dart';
+import 'package:serealappv2/models/providers/logs_collection.dart';
+import 'package:serealappv2/models/types/daily_log.dart';
 import 'package:serealappv2/widgets/sereal_navigation_bar.dart';
 import 'package:serealappv2/widgets/sereal_scaffold.dart';
 
@@ -36,8 +37,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return SerealScaffold(
       appBarAction: IconButton(
         icon: Icon(Icons.delete_forever),
-        onPressed: () async {
-          (await ref.read(getDatabaseProvider.future)).deleteAllDocuments();
+        onPressed: () {
+          ref.read(deleteAllRecordsProvider);
         },
       ),
       title: 'Welcome!',
