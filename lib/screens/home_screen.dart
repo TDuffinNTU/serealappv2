@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:serealappv2/models/providers/database.dart';
-import 'package:serealappv2/models/providers/logs_collection.dart';
-import 'package:serealappv2/models/types/daily_log.dart';
+import 'package:serealappv2/models/providers/database_providers.dart';
 import 'package:serealappv2/widgets/sereal_navigation_bar.dart';
 import 'package:serealappv2/widgets/sereal_scaffold.dart';
 
@@ -38,7 +36,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       appBarAction: IconButton(
         icon: Icon(Icons.delete_forever),
         onPressed: () {
-          ref.read(deleteAllRecordsProvider);
+          ref.read(databaseClearRecordsProvider);
         },
       ),
       title: 'Welcome!',
