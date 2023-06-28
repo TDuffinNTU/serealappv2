@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class SerealScaffold extends StatelessWidget {
   const SerealScaffold({
     super.key,
-    required this.appBarAction,
+    required this.appBarActions,
     required this.title,
     required this.body,
     this.bottomNavigationBar,
   });
 
-  final Widget? appBarAction;
+  final List<Widget>? appBarActions;
   final Widget? bottomNavigationBar;
   final String title;
   final Widget body;
@@ -20,7 +20,7 @@ class SerealScaffold extends StatelessWidget {
       appBar: AppBar(
         elevation: 1,
         centerTitle: true,
-        actions: appBarAction == null ? null : [appBarAction!],
+        actions: appBarActions == null ? null : appBarActions!,
         title: Text(title),
       ),
       body: body,

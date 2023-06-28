@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:serealappv2/models/providers/database_providers.dart';
+import 'package:serealappv2/models/providers/theme_providers.dart';
 import 'package:serealappv2/widgets/sereal_navigation_bar.dart';
 import 'package:serealappv2/widgets/sereal_scaffold.dart';
 
@@ -33,12 +34,24 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SerealScaffold(
-      appBarAction: IconButton(
-        icon: Icon(Icons.delete_forever),
-        onPressed: () {
-          ref.read(databaseClearRecordsProvider);
-        },
-      ),
+      appBarActions: [
+        IconButton(
+          icon: Icon(Icons.delete_forever),
+          onPressed: () {
+            ref.read(databaseClearRecordsProvider);
+          },
+        ),
+        IconButton(
+          icon: Icon(
+            ref.watch(appBrightnessProvider) == ThemeMode.light
+                ? Icons.dark_mode
+                : Icons.light_mode,
+          ),
+          onPressed: () {
+            ref.read(appBrightnessProvider.notifier).toggle();
+          },
+        ),
+      ],
       title: 'Welcome!',
       body: selectedTab,
       bottomNavigationBar: SerealNavigationBar(

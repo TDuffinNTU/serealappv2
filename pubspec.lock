@@ -209,14 +209,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.3"
-  cupertino_icons:
-    dependency: "direct main"
-    description:
-      name: cupertino_icons
-      sha256: e35129dc44c9118cee2a5603506d823bab99c68393879edb440e0090d07586be
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.5"
   custom_lint:
     dependency: "direct dev"
     description:
@@ -326,14 +318,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.75.2"
-  flutter_spinkit:
-    dependency: "direct main"
-    description:
-      name: flutter_spinkit
-      sha256: b39c753e909d4796906c5696a14daf33639a76e017136c8d82bf3e620ce5bb8e
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.2.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter

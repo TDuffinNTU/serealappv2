@@ -6,50 +6,13 @@ import 'package:serealappv2/utils/datetime_extensions.dart';
 
 part 'log_providers.g.dart';
 
-@riverpod
-class LogsCollection extends _$LogsCollection {
-  LogsCollection();
-
-  late MimirIndex _database;
-
-  Future<void> deleteLog(DailyLog log) async {
-    await _database.deleteDocument(log.id);
-    state = await AsyncValue.guard(() async {
-      return _fetchLogs();
-    });
-  }
-
-  Future<void> saveLog(DailyLog log) async {
-    await _database.addDocument(log.toJson());
-    state = await AsyncValue.guard(() async {
-      return _fetchLogs();
-    });
-  }
-
-  Future<void> deleteAllLogs() async {
-    await _database.deleteAllDocuments();
-    state = await AsyncValue.guard(() async {
-      return _fetchLogs();
-    });
-  }
-
-  Future<List<DailyLog>> _fetchLogs() async {
-    return (await _database.getAllDocuments()).map(DailyLog.fromJson).toList();
-  }
-
-  @override
-  FutureOr<List<DailyLog>> build() async {
-    _database = await ref.watch(getDatabaseProvider.future);
-    return _fetchLogs();
-  }
-}
-
 /// Returns the result of a MimirIndex.search using the filters provided.
 ///
 /// A `null` filter will return *all* the logs in the db.
 ///
 /// A search may return no results, in which case an empty List<DailyLog>
 /// will be returned.
+/// TODO Package options into a bundle for submitting to this provider.
 @riverpod
 Future<List<DailyLog>> filteredLogs(FilteredLogsRef ref, {required Filter? filter}) async {
   final MimirIndex db = await ref.watch(getDatabaseProvider.future);

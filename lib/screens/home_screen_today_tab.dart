@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:serealappv2/models/providers/log_providers.dart';
 import 'package:serealappv2/models/types/daily_log.dart';
-import 'package:serealappv2/models/types/note.dart';
 
 class HomeScreenTodayTab extends ConsumerWidget {
   const HomeScreenTodayTab({super.key});
@@ -25,8 +23,8 @@ class HomeScreenTodayTab extends ConsumerWidget {
         height: 800,
         slideIndicator: CircularSlideIndicator(
           // TODO pick better colours?
-          currentIndicatorColor: Theme.of(context).primaryColorDark,
-          indicatorBackgroundColor: Theme.of(context).primaryColorLight,
+          currentIndicatorColor: Theme.of(context).colorScheme.primary,
+          indicatorBackgroundColor: Theme.of(context).colorScheme.primaryContainer,
         ),
       ),
     );
@@ -52,9 +50,7 @@ class LogWidget extends ConsumerWidget {
           ),
           loading: () => Card(
             child: Center(
-              child: SpinKitDancingSquare(
-                color: Theme.of(context).primaryColor,
-              ),
+              child: CircularProgressIndicator(),
             ),
           ),
         );
@@ -115,12 +111,6 @@ class CarouselLog3 extends ConsumerWidget {
                   Text('Note'),
                   TextField(
                     controller: TextEditingController(text: log.note.content),
-                    onSubmitted: (value) => saveLog(
-                      ref,
-                      log.copyWith(
-                        note: Note(content: value),
-                      ),
-                    ),
                   ),
                 ],
               ),
@@ -129,9 +119,5 @@ class CarouselLog3 extends ConsumerWidget {
         ],
       ),
     );
-  }
-
-  Future<void> saveLog(WidgetRef ref, DailyLog log) {
-    return ref.read(logsCollectionProvider.notifier).saveLog(log);
   }
 }
