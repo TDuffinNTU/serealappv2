@@ -12,7 +12,6 @@ part 'log_providers.g.dart';
 ///
 /// A search may return no results, in which case an empty List<DailyLog>
 /// will be returned.
-/// TODO Package options into a bundle for submitting to this provider.
 @riverpod
 Future<List<DailyLog>> filteredLogs(FilteredLogsRef ref, {required Filter? filter}) async {
   final MimirIndex db = await ref.watch(getDatabaseProvider.future);
