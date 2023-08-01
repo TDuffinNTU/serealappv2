@@ -9,6 +9,7 @@ import 'home_screen_history_tab.dart';
 import 'home_screen_notes_tab.dart';
 import 'home_screen_today_tab.dart';
 
+/// Common navigator bar and tab selection for homescreen tabs.
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 

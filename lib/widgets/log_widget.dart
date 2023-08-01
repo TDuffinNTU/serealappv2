@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jiffy/jiffy.dart';
+import 'package:serealappv2/models/providers/log_providers.dart';
 import 'package:serealappv2/models/types/daily_log.dart';
 import 'package:serealappv2/utils/datetime_extensions.dart';
 
 class LogWidget extends ConsumerWidget {
-  const LogWidget({super.key, required this.provider});
-  final AutoDisposeFutureProvider<DailyLog> provider;
+  const LogWidget({super.key, required this.date});
+
+  final DateTime date;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ref.watch(provider).when(
+    return ref.watch(getLogProvider(date)).when(
           skipLoadingOnRefresh: true,
           skipLoadingOnReload: true,
           data: (log) => _LogWidgetContent(

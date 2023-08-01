@@ -20,56 +20,18 @@ Future<List<DailyLog>> filteredLogs(FilteredLogsRef ref, {required Filter? filte
   return documents.map(DailyLog.fromJson).toList();
 }
 
-/// Returns the stored log for today,
-/// or a new log with today's date if none exists.
+/// Returns the stored log for a given date,
+/// or a new log with the given date if none exists.
 @riverpod
-Future<DailyLog> todayLog(TodayLogRef ref) async {
-  final DateTime today = DateTime.now();
-
+Future<DailyLog> getLog(GetLogRef ref, DateTime date) async {
   final List<DailyLog> logs = await ref.watch(
     filteredLogsProvider(
       filter: Mimir.where(
         'date',
-        isEqualTo: today.databaseType,
+        isEqualTo: date.databaseType,
       ),
     ).future,
   );
 
-  return logs.isNotEmpty ? logs.first : DailyLog.defaults();
-}
-
-/// Returns the stored log for tomorrow,
-/// or a new log with tomorrows date if none exists.
-@riverpod
-Future<DailyLog> tomorrowLog(TomorrowLogRef ref) async {
-  final DateTime tomorrow = DateTime.now().dateOnly.add(Duration(days: 1));
-
-  final List<DailyLog> logs = await ref.watch(
-    filteredLogsProvider(
-      filter: Mimir.where(
-        'date',
-        isEqualTo: tomorrow.databaseType,
-      ),
-    ).future,
-  );
-
-  return logs.isNotEmpty ? logs.first : DailyLog.defaults(date: tomorrow);
-}
-
-/// Returns the stored log for yesterday,
-/// or a new log with yesterdays date if none exists.
-@riverpod
-Future<DailyLog> yesterdayLog(YesterdayLogRef ref) async {
-  final DateTime yesterday = DateTime.now().dateOnly.subtract(Duration(days: 1));
-
-  final List<DailyLog> logs = await ref.watch(
-    filteredLogsProvider(
-      filter: Mimir.where(
-        'date',
-        isEqualTo: yesterday.databaseType,
-      ),
-    ).future,
-  );
-
-  return logs.isNotEmpty ? logs.first : DailyLog.defaults(date: yesterday);
+  return logs.isNotEmpty ? logs.first : DailyLog.defaults(date: date);
 }

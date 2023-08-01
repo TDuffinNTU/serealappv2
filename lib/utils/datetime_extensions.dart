@@ -8,4 +8,8 @@ extension DateTimeExtensions on DateTime {
       );
 
   String get databaseType => this.dateOnly.toIso8601String();
+
+  static DateTime today() => DateTime.now();
+  static DateTime tomorrow() => DateTime.now().dateOnly.add(Duration(days: 1));
+  static DateTime yesterday() => DateTime.now().dateOnly.subtract(Duration(days: 1));
 }
