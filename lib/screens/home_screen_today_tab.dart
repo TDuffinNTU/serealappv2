@@ -18,13 +18,8 @@ class HomeScreenTodayTab extends ConsumerWidget {
       ],
       options: CarouselOptions(
         initialPage: 1,
-        enlargeCenterPage: true,
-        floatingIndicator: true,
-        height: 800,
-        slideIndicator: CircularSlideIndicator(
-          currentIndicatorColor: Theme.of(context).colorScheme.primary,
-          indicatorBackgroundColor: Theme.of(context).colorScheme.primaryContainer,
-        ),
+        height: double.infinity,
+        showIndicator: false,
       ),
     );
   }

@@ -8,7 +8,7 @@ part 'theme_providers.g.dart';
 class AppBrightness extends _$AppBrightness {
   @override
   ThemeMode build() {
-    return ThemeMode.system;
+    return ThemeMode.light;
   }
 
   /// Toggles the brightness between light and dark.

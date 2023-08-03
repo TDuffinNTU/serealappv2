@@ -4,6 +4,7 @@ import 'package:jiffy/jiffy.dart';
 import 'package:serealappv2/models/providers/log_providers.dart';
 import 'package:serealappv2/models/types/daily_log.dart';
 import 'package:serealappv2/utils/datetime_extensions.dart';
+import 'package:serealappv2/utils/sizing.dart';
 
 class LogWidget extends ConsumerWidget {
   const LogWidget({super.key, required this.date});
@@ -40,16 +41,20 @@ class _LogWidgetContent extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return SingleChildScrollView(
+      padding: EdgeInsets.only(
+        top: Sizing.screenPadding,
+        right: Sizing.xs,
+        left: Sizing.xs,
+      ),
       child: Column(
         children: [
-          SizedBox(height: 16),
           Text(
             '${DateTime.now().dateOnly == log.date ? 'Today' : Jiffy.parse(log.date.toString()).MMMMEEEEd}',
           ),
           SizedBox(height: 8),
           Card(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              padding: EdgeInsets.all(Sizing.s),
               child: Flex(
                 direction: Axis.vertical,
                 children: [
@@ -102,10 +107,9 @@ class _LogWidgetSectionHeader extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 8.0),
-      child: IntrinsicHeight(
-        child: Stack(children: [
+    return IntrinsicHeight(
+      child: Stack(
+        children: [
           Center(
             child: Text(
               title,
@@ -115,45 +119,14 @@ class _LogWidgetSectionHeader extends ConsumerWidget {
           if (onAdd != null)
             Align(
               alignment: Alignment.centerRight,
-              child: SizedBox(
-                height: 30,
-                width: 90,
-                child: FilledButton.tonalIcon(
-                  onPressed: onAdd,
-                  icon: Icon(Icons.add),
-                  label: Text('Add'),
-                ),
+              child: FilledButton.tonalIcon(
+                onPressed: onAdd,
+                icon: Icon(Icons.add),
+                label: Text('Add'),
               ),
             ),
-        ]),
+        ],
       ),
     );
-    // return Row(
-    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //   children: [
-    //     SizedBox(),
-    //     Align(
-    //       alignment: Alignment.center,
-    //       child: Text(
-    //         title,
-    //         style: Theme.of(context).textTheme.titleLarge,
-    //       ),
-    //     ),
-    //     Align(
-    //       alignment: Alignment.centerRight,
-    //       child: onAdd != null
-    //           ? SizedBox(
-    //               height: 30,
-    //               width: 90,
-    //               child: FilledButton.tonalIcon(
-    //                 onPressed: onAdd,
-    //                 icon: Icon(Icons.add),
-    //                 label: Text('Add'),
-    //               ),
-    //             )
-    //           : Spacer(),
-    //     ),
-    //   ],
-    // );
   }
 }
