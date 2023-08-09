@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:serealappv2/theme/sereal_theme.dart';
 
 class SerealNavigationBar extends StatefulWidget {
   const SerealNavigationBar({
