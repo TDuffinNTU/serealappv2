@@ -1,50 +1,59 @@
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 /// The custom theme for Sereal App.
-///
-/// Currently only supports light mode.
-///
-/// TODO split this out and implement `flex_color_scheme`.
-/// TODO make this a provider ?
 class SerealTheme {
-  SerealTheme();
-
-  late ColorScheme _colorScheme;
-
-  ThemeData getTheme({int colorSeed = 0xFF5D6CBD}) {
-    _colorScheme = ColorScheme.fromSeed(
-      seedColor: Color(colorSeed),
-      primary: Color(colorSeed),
-    );
-
-    return ThemeData(
-      useMaterial3: true,
-      colorScheme: _colorScheme,
-      navigationBarTheme: _navigationBarTheme,
-      appBarTheme: _appBarTheme,
-    );
-  }
-
-  /// The theme for [SerealNavigationBar].
-  NavigationBarThemeData get _navigationBarTheme => NavigationBarThemeData(
-        backgroundColor: _colorScheme.primary,
-        labelTextStyle: MaterialStateProperty.all(
-          TextStyle(color: _colorScheme.onPrimary, fontSize: 12),
+  ThemeData get lightTheme => FlexThemeData.light(
+        colorScheme: colorScheme,
+        scheme: FlexScheme.brandBlue,
+        surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
+        blendLevel: 15,
+        appBarStyle: FlexAppBarStyle.primary,
+        subThemesData: const FlexSubThemesData(
+          blendOnLevel: 10,
+          blendOnColors: false,
+          useTextTheme: true,
+          useM2StyleDividerInM3: true,
+          navigationBarSelectedLabelSchemeColor: SchemeColor.onPrimary,
+          navigationBarUnselectedLabelSchemeColor: SchemeColor.inversePrimary,
+          navigationBarSelectedIconSchemeColor: SchemeColor.onPrimary,
+          navigationBarUnselectedIconSchemeColor: SchemeColor.inversePrimary,
+          navigationBarIndicatorSchemeColor: SchemeColor.onPrimary,
+          navigationBarBackgroundSchemeColor: SchemeColor.primary,
+          menuIndicatorBackgroundSchemeColor: SchemeColor.primary,
         ),
-        iconTheme: MaterialStateProperty.resolveWith(
-          (states) {
-            if (states.any((s) => s == MaterialState.selected)) {
-              return IconThemeData(color: _colorScheme.onPrimaryContainer);
-            }
-            return IconThemeData(color: _colorScheme.onPrimary);
-          },
-        ),
+        keyColors: const FlexKeyColors(),
+        visualDensity: FlexColorScheme.comfortablePlatformDensity,
+        useMaterial3: true,
+        swapLegacyOnMaterial3: true,
+        fontFamily: GoogleFonts.notoSans().fontFamily,
       );
 
-  /// The theme for [SerealScaffold]'s app bar.
-  AppBarTheme get _appBarTheme => AppBarTheme(
-        backgroundColor: _colorScheme.primary,
-        titleTextStyle: TextStyle(fontSize: 22),
-        iconTheme: IconThemeData(color: _colorScheme.onPrimary),
+  ThemeData get darkTheme => FlexThemeData.dark(
+        colorScheme: colorScheme,
+        surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
+        appBarStyle: FlexAppBarStyle.background,
+        blendLevel: 13,
+        subThemesData: const FlexSubThemesData(
+          blendOnLevel: 20,
+          useTextTheme: true,
+          useM2StyleDividerInM3: true,
+          navigationBarSelectedLabelSchemeColor: SchemeColor.onBackground,
+          navigationBarUnselectedLabelSchemeColor: SchemeColor.onBackground,
+          navigationBarSelectedIconSchemeColor: SchemeColor.onBackground,
+          navigationBarUnselectedIconSchemeColor: SchemeColor.onBackground,
+          navigationBarIndicatorSchemeColor: SchemeColor.onBackground,
+          navigationBarBackgroundSchemeColor: SchemeColor.background,
+          navigationBarElevation: 0,
+        ),
+        keyColors: const FlexKeyColors(keepPrimary: true),
+        visualDensity: FlexColorScheme.comfortablePlatformDensity,
+        useMaterial3: true,
+        swapLegacyOnMaterial3: true,
+        fontFamily: GoogleFonts.notoSans().fontFamily,
       );
+
+  /// TODO use a provider to manage this bad boy
+  ColorScheme get colorScheme => SeedColorScheme.fromSeeds(primaryKey: Color(0xFF5D6CBD));
 }

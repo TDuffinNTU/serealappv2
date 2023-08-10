@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:serealappv2/models/providers/theme_providers.dart';
 import 'package:serealappv2/screens/home_screen.dart';
@@ -13,10 +14,12 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+
     return MaterialApp(
       title: 'Sereal',
-      theme: SerealTheme().getTheme(),
-      darkTheme: ThemeData.dark(useMaterial3: true),
+      theme: SerealTheme().lightTheme,
+      darkTheme: SerealTheme().darkTheme,
       themeMode: ref.watch(appBrightnessProvider),
       home: const HomeScreen(),
     );

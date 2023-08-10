@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SerealNavigationBar extends StatefulWidget {
   const SerealNavigationBar({
@@ -32,23 +33,29 @@ class _SerealNavigationBarState extends State<SerealNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
-    return NavigationBar(
-      destinations: [
-        NavigationDestination(
-          label: 'Notes',
-          icon: Icon(Icons.sticky_note_2),
-        ),
-        NavigationDestination(
-          label: 'Today',
-          icon: Icon(Icons.calendar_month),
-        ),
-        NavigationDestination(
-          label: 'History',
-          icon: Icon(Icons.history),
-        ),
-      ],
-      onDestinationSelected: selectTab,
-      selectedIndex: selectedTab,
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      // Makes the bottom nav bar transparent so we dont have to see its ugly face.
+      value: SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.black.withOpacity(0),
+      ),
+      child: NavigationBar(
+        destinations: [
+          NavigationDestination(
+            label: 'Notes',
+            icon: Icon(Icons.sticky_note_2),
+          ),
+          NavigationDestination(
+            label: 'Today',
+            icon: Icon(Icons.calendar_month),
+          ),
+          NavigationDestination(
+            label: 'History',
+            icon: Icon(Icons.history),
+          ),
+        ],
+        onDestinationSelected: selectTab,
+        selectedIndex: selectedTab,
+      ),
     );
   }
 }

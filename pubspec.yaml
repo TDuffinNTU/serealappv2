@@ -44,6 +44,8 @@ dependencies:
   json_annotation: ^4.8.1
   flutter_riverpod: ^2.3.6
   riverpod_annotation: ^2.1.1
+  flex_color_scheme: ^7.2.0
+  google_fonts: ^5.1.0
 
 dev_dependencies:
   flutter_test:

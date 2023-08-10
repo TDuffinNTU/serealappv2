@@ -273,6 +273,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
+  flex_color_scheme:
+    dependency: "direct main"
+    description:
+      name: flex_color_scheme
+      sha256: "659cf59bd5ccaa1e7de9384342be8b666ff10b108ed57a7fd46c122fb8bf6aca"
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.2.0"
+  flex_seed_scheme:
+    dependency: transitive
+    description:
+      name: flex_seed_scheme
+      sha256: "29c12aba221eb8a368a119685371381f8035011d18de5ba277ad11d7dfb8657f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.0"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -314,10 +330,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_rust_bridge
-      sha256: "8dcfeff9dcf0db9c76578c8805a337c0e5e21b4d96887eb1007b6fe141e15ea9"
+      sha256: "6960d0843f6f7b4eac28f2531eb0024f01c49bf9eec798327fbbafa084c1f535"
       url: "https://pub.dev"
     source: hosted
-    version: "1.75.2"
+    version: "1.78.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -355,6 +371,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  google_fonts:
+    dependency: "direct main"
+    description:
+      name: google_fonts
+      sha256: e20ff62b158b96f392bfc8afe29dee1503c94fbea2cbe8186fd59b756b8ae982
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.1.0"
   graphs:
     dependency: transitive
     description:
@@ -375,10 +399,10 @@ packages:
     dependency: transitive
     description:
       name: http
-      sha256: "5895291c13fa8a3bd82e76d5627f69e0d85ca6a30dcac95c4ea19a5d555879c2"
+      sha256: "759d1a329847dd0f39226c688d3e06a6b8679668e350e2891a6474f8b4bb8525"
       url: "https://pub.dev"
     source: hosted
-    version: "0.13.6"
+    version: "1.1.0"
   http_multi_server:
     dependency: transitive
     description:
@@ -495,10 +519,10 @@ packages:
     dependency: "direct main"
     description:
       name: mimir
-      sha256: "367fa84dd3f638ef469d8e2e0fd3b40972cb2f581c23030801723c0c7b1a58c6"
+      sha256: "28be8de83b33cd9a11522a877061dd3d10b25a3bfe169ad4e2af164143b4c0da"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.1-dev.11"
+    version: "0.0.2"
   package_config:
     dependency: transitive
     description:
@@ -631,10 +655,10 @@ packages:
     dependency: transitive
     description:
       name: puppeteer
-      sha256: dd49117259867d0ce0de33ddd95628fb70cff94581a6432c08272447b8dd1d27
+      sha256: "59e723cc5b69537159a7c34efd645dc08a6a1ac4647d7d7823606802c0f93cdb"
       url: "https://pub.dev"
     source: hosted
-    version: "2.24.0"
+    version: "3.2.0"
   riverpod:
     dependency: transitive
     description:
@@ -881,5 +905,5 @@ packages:
     source: hosted
     version: "3.1.2"
 sdks:
-  dart: ">=3.0.0-0 <4.0.0"
-  flutter: ">=3.3.0"
+  dart: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
