@@ -3,6 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:serealappv2/models/providers/database_providers.dart';
 import 'package:serealappv2/models/types/daily_log.dart';
 import 'package:serealappv2/utils/datetime_extensions.dart';
+import 'package:serealappv2/utils/sereal_logger.dart';
 
 part 'log_providers.g.dart';
 
@@ -33,5 +34,13 @@ Future<DailyLog> getLog(GetLogRef ref, DateTime date) async {
     ).future,
   );
 
-  return logs.isNotEmpty ? logs.first : DailyLog.defaults(date: date);
+  if (logs.isEmpty) {
+    DailyLog newLog = DailyLog.defaults(date: date);
+    SerealLogger.info(message: 'Creating new log: ${newLog.id}', name: 'LogProviders');
+    return newLog;
+  } else {
+    DailyLog fetchedLog = logs.first;
+    SerealLogger.info(message: 'Found log: ${fetchedLog.id}', name: 'LogProviders');
+    return fetchedLog;
+  }
 }
