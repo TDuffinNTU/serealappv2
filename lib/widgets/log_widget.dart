@@ -16,6 +16,7 @@ class LogWidget extends ConsumerWidget {
     return ref.watch(getLogProvider(date)).when(
           skipLoadingOnRefresh: true,
           skipLoadingOnReload: true,
+          // TODO fade-in when loaded :)
           data: (log) => _LogWidgetContent(
             log: log,
           ),
@@ -146,6 +147,7 @@ class _LogWidgetItemList extends StatelessWidget {
         children: List.generate(
           3,
           (index) => _LogWidgetListTile(
+            onChecked: (_) {},
             isDark: index % 2 == 0,
             isChecked: false,
             subtitle: null,
@@ -164,6 +166,7 @@ class _LogWidgetListTile extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.isChecked,
+    required this.onChecked,
     required this.image,
   });
 
@@ -172,6 +175,7 @@ class _LogWidgetListTile extends StatelessWidget {
   final String? subtitle;
   final bool isChecked;
   final String? image;
+  final Function(bool?)? onChecked;
 
   @override
   Widget build(BuildContext context) {
@@ -191,8 +195,8 @@ class _LogWidgetListTile extends StatelessWidget {
                 color: Theme.of(context).primaryColor,
               ),
             ),
-            value: false,
-            onChanged: (_) {},
+            value: isChecked,
+            onChanged: onChecked,
           ),
           SizedBox(width: 8),
           Column(
