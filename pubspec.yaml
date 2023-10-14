@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 0.0.1
 
 environment:
-  sdk: '>=2.19.6 <3.0.0'
+  sdk: '^3.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -45,8 +45,8 @@ dependencies:
   flutter_riverpod: ^2.3.6
   riverpod_annotation: ^2.1.1
   flex_color_scheme: ^7.2.0
-  google_fonts: ^5.1.0
-  riverpod_lint: ^1.4.0
+  google_fonts: ^6.1.0
+  riverpod_lint: ^2.1.1
 
 dev_dependencies:
   flutter_test:
@@ -55,7 +55,7 @@ dev_dependencies:
   build_runner: ^2.3.3
   freezed: ^2.3.5
   json_serializable: ^6.6.2
-  custom_lint: ^0.4.0
+  custom_lint: ^0.5.3
   riverpod_generator: ^2.2.3
 
 # For information on the generic Dart part of this file, see the
