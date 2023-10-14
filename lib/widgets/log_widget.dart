@@ -5,6 +5,7 @@ import 'package:serealappv2/models/providers/database_providers.dart';
 import 'package:serealappv2/models/providers/log_providers.dart';
 import 'package:serealappv2/models/types/daily_log.dart';
 import 'package:serealappv2/models/types/meal.dart';
+import 'package:serealappv2/models/types/todo.dart';
 import 'package:serealappv2/utils/datetime_extensions.dart';
 import 'package:serealappv2/utils/sizing.dart';
 import 'package:serealappv2/utils/string_extensions.dart';
@@ -68,6 +69,7 @@ class _LogWidgetContent extends ConsumerWidget {
               child: Flex(
                 direction: Axis.vertical,
                 children: [
+                  // MEALS
                   _LogWidgetSectionHeader(
                     title: 'Meals',
                     onAdd: () => _updateLog(
@@ -97,34 +99,67 @@ class _LogWidgetContent extends ConsumerWidget {
                       ),
                     ),
                   ),
+                  // SNACKS
                   _LogWidgetSectionHeader(
                     title: 'Snacks',
-                    onAdd: () => {},
+                    onAdd: () => _updateLog(
+                      ref,
+                      log.copyWith(
+                        snacks: log.snacks.toList()
+                          ..add(
+                            Meal.defaults('New Snack'),
+                          ),
+                      ),
+                    ),
                   ),
                   _LogWidgetItemList(
-                    items: log.snacks
-                        .map((e) => (
-                              title: e.name,
-                              subtitle: e.note,
-                              isChecked: e.complete,
-                              onChecked: (_) {},
-                            ))
-                        .toList(),
+                    items: List.generate(
+                      log.snacks.length,
+                      (index) => (
+                        title: log.snacks[index].name,
+                        subtitle: log.snacks[index].note,
+                        isChecked: log.snacks[index].complete,
+                        onChecked: (checked) => _updateLog(
+                              ref,
+                              log.updateSnack(
+                                index: index,
+                                newSnack: log.snacks[index].copyWith(complete: checked ?? false),
+                              ),
+                            ),
+                      ),
+                    ),
                   ),
+                  // TODOS
                   _LogWidgetSectionHeader(
                     title: 'Plans',
-                    onAdd: () => {},
+                    onAdd: () => _updateLog(
+                      ref,
+                      log.copyWith(
+                        todos: log.todos.toList()
+                          ..add(
+                            Todo.defaults('New Plan'),
+                          ),
+                      ),
+                    ),
                   ),
                   _LogWidgetItemList(
-                    items: log.todos
-                        .map((e) => (
-                              title: e.name,
-                              subtitle: null,
-                              isChecked: e.complete,
-                              onChecked: (_) {},
-                            ))
-                        .toList(),
+                    items: List.generate(
+                      log.todos.length,
+                      (index) => (
+                        title: log.todos[index].name,
+                        subtitle: null,
+                        isChecked: log.todos[index].complete,
+                        onChecked: (checked) => _updateLog(
+                              ref,
+                              log.updateTodo(
+                                index: index,
+                                newTodo: log.todos[index].copyWith(complete: checked ?? false),
+                              ),
+                            ),
+                      ),
+                    ),
                   ),
+                  // NOTES
                   _LogWidgetSectionHeader(
                     title: 'Thoughts',
                     onAdd: null,
