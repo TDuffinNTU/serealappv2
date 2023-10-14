@@ -1,3 +1,4 @@
+
 import 'package:flutter_mimir/flutter_mimir.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:serealappv2/models/types/daily_log.dart';
@@ -12,6 +13,7 @@ FutureOr<MimirIndex> getDatabase(GetDatabaseRef ref) async {
   var _instance = await Mimir.defaultInstance;
   if (_database == null) {
     _database = await _instance.openIndex('logs');
+    SerealLogger.info(message: 'DB singleton initialised', name: 'database_providers');
   }
   return _database!;
 }
