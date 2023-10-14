@@ -5,6 +5,7 @@ import 'package:serealappv2/models/providers/log_providers.dart';
 import 'package:serealappv2/models/types/daily_log.dart';
 import 'package:serealappv2/utils/datetime_extensions.dart';
 import 'package:serealappv2/utils/sizing.dart';
+import 'package:serealappv2/utils/string_extensions.dart';
 
 class LogWidget extends ConsumerWidget {
   const LogWidget({super.key, required this.date});
@@ -63,17 +64,44 @@ class _LogWidgetContent extends ConsumerWidget {
                     title: 'Meals',
                     onAdd: () => {},
                   ),
-                  _LogWidgetItemList(),
+                  _LogWidgetItemList(
+                    items: log.meals
+                        .map((e) => (
+                              title: e.name,
+                              subtitle: e.note,
+                              isChecked: e.complete,
+                              onChecked: (_) {},
+                            ))
+                        .toList(),
+                  ),
                   _LogWidgetSectionHeader(
                     title: 'Snacks',
                     onAdd: () => {},
                   ),
-                  _LogWidgetItemList(),
+                  _LogWidgetItemList(
+                    items: log.snacks
+                        .map((e) => (
+                              title: e.name,
+                              subtitle: e.note,
+                              isChecked: e.complete,
+                              onChecked: (_) {},
+                            ))
+                        .toList(),
+                  ),
                   _LogWidgetSectionHeader(
                     title: 'Plans',
                     onAdd: () => {},
                   ),
-                  _LogWidgetItemList(),
+                  _LogWidgetItemList(
+                    items: log.todos
+                        .map((e) => (
+                              title: e.name,
+                              subtitle: null,
+                              isChecked: e.complete,
+                              onChecked: (_) {},
+                            ))
+                        .toList(),
+                  ),
                   _LogWidgetSectionHeader(
                     title: 'Thoughts',
                     onAdd: null,
@@ -126,8 +154,12 @@ class _LogWidgetSectionHeader extends StatelessWidget {
   }
 }
 
-class _LogWidgetItemList extends StatelessWidget {
-  const _LogWidgetItemList();
+class _LogWidgetItemList<T> extends StatelessWidget {
+  const _LogWidgetItemList({
+    required this.items,
+  });
+
+  final List<({String title, String? subtitle, bool isChecked, Function(bool?) onChecked})> items;
 
   @override
   Widget build(BuildContext context) {
@@ -145,13 +177,13 @@ class _LogWidgetItemList extends StatelessWidget {
       ),
       child: Column(
         children: List.generate(
-          3,
+          items.length,
           (index) => _LogWidgetListTile(
-            onChecked: (_) {},
+            onChecked: items[index].onChecked,
             isDark: index % 2 == 0,
-            isChecked: false,
-            subtitle: null,
-            title: 'Hello',
+            isChecked: items[index].isChecked,
+            subtitle: items[index].subtitle,
+            title: items[index].title,
             image: null,
           ),
         ),
@@ -203,13 +235,14 @@ class _LogWidgetListTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Hello'),
-              Text(
-                'Subtitle...',
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.onPrimaryContainer.withOpacity(0.4),
+              Text(title),
+              if (!subtitle.isNullOrEmpty)
+                Text(
+                  subtitle!,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onPrimaryContainer.withOpacity(0.4),
+                  ),
                 ),
-              ),
             ],
           ),
           Spacer(),
