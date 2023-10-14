@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jiffy/jiffy.dart';
+import 'package:serealappv2/models/providers/database_providers.dart';
 import 'package:serealappv2/models/providers/log_providers.dart';
 import 'package:serealappv2/models/types/daily_log.dart';
+import 'package:serealappv2/models/types/meal.dart';
 import 'package:serealappv2/utils/datetime_extensions.dart';
 import 'package:serealappv2/utils/sizing.dart';
 import 'package:serealappv2/utils/string_extensions.dart';
@@ -40,6 +42,12 @@ class _LogWidgetContent extends ConsumerWidget {
 
   final DailyLog log;
 
+  /// Updates the log with new data. Triggers a rebuild.
+  void _updateLog(WidgetRef ref, DailyLog updatedLog) {
+    ref.read(databaseAddRecordProvider(log: updatedLog));
+    ref.invalidate(getDatabaseProvider);
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return SingleChildScrollView(
@@ -62,17 +70,32 @@ class _LogWidgetContent extends ConsumerWidget {
                 children: [
                   _LogWidgetSectionHeader(
                     title: 'Meals',
-                    onAdd: () => {},
+                    onAdd: () => _updateLog(
+                      ref,
+                      log.copyWith(
+                        meals: log.meals.toList()
+                          ..add(
+                            Meal.defaults('New Meal'),
+                          ),
+                      ),
+                    ),
                   ),
                   _LogWidgetItemList(
-                    items: log.meals
-                        .map((e) => (
-                              title: e.name,
-                              subtitle: e.note,
-                              isChecked: e.complete,
-                              onChecked: (_) {},
-                            ))
-                        .toList(),
+                    items: List.generate(
+                      log.meals.length,
+                      (index) => (
+                        title: log.meals[index].name,
+                        subtitle: log.meals[index].note,
+                        isChecked: log.meals[index].complete,
+                        onChecked: (checked) => _updateLog(
+                              ref,
+                              log.updateMeal(
+                                index: index,
+                                newMeal: log.meals[index].copyWith(complete: checked ?? false),
+                              ),
+                            ),
+                      ),
+                    ),
                   ),
                   _LogWidgetSectionHeader(
                     title: 'Snacks',
@@ -250,17 +273,17 @@ class _LogWidgetListTile extends StatelessWidget {
             Align(
               child: ConstrainedBox(
                 constraints: BoxConstraints(maxWidth: 110),
-                // TODO image decoding.
-                // child: Image(
-                //   width: 110,
-                //   fit: BoxFit.cover,
-                //   errorBuilder: (context, _, __) => Container(
-                //     color: Colors.purpleAccent,
-                //     width: 200,
-                //     height: 200,
-                //   ),
-                //   image: NetworkImage('https://picsum.photos/id/${Random().nextInt(100)}/200/200'),
-                // ),
+                child: Image(
+                  width: 110,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, _, __) => Container(
+                    color: Colors.purpleAccent,
+                    width: 200,
+                    height: 200,
+                  ),
+                  // TODO remove placeholder.
+                  image: NetworkImage('https://picsum.photos/id/${500}/200/200'),
+                ),
               ),
             ),
         ],

@@ -20,8 +20,7 @@ class DailyLog with _$DailyLog {
     required String id,
   }) = _DailyLog;
 
-  factory DailyLog.fromJson(Map<String, dynamic> json) =>
-      _$DailyLogFromJson(json);
+  factory DailyLog.fromJson(Map<String, dynamic> json) => _$DailyLogFromJson(json);
 
   factory DailyLog.defaults({DateTime? date}) => DailyLog(
         meals: [
@@ -41,5 +40,25 @@ class DailyLog with _$DailyLog {
         ),
         date: date != null ? date.dateOnly : DateTime.now().dateOnly,
         id: Uuid().v1(),
+      );
+
+  const DailyLog._();
+
+  DailyLog updateMeal({required int index, required Meal newMeal}) => this.copyWith(
+        meals: [
+          for (int i = 0; i < this.meals.length; i++) i == index ? newMeal : this.meals[i],
+        ],
+      );
+
+  DailyLog updateSnack({required int index, required Meal newSnack}) => this.copyWith(
+        snacks: [
+          for (int i = 0; i < this.snacks.length; i++) i == index ? newSnack : this.snacks[i],
+        ],
+      );
+
+  DailyLog updateTodo({required int index, required Todo newTodo}) => this.copyWith(
+        todos: [
+          for (int i = 0; i < this.todos.length; i++) i == index ? newTodo : this.todos[i],
+        ],
       );
 }

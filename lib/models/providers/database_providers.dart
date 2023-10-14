@@ -13,7 +13,7 @@ FutureOr<MimirIndex> getDatabase(GetDatabaseRef ref) async {
   var _instance = await Mimir.defaultInstance;
   if (_database == null) {
     _database = await _instance.openIndex('logs');
-    SerealLogger.info(message: 'DB singleton initialised', name: 'database_providers');
+    SerealLogger.info(message: 'DB singleton initialised', name: 'Mimir');
   }
   return _database!;
 }
@@ -36,5 +36,5 @@ Future<void> databaseClearRecords(DatabaseClearRecordsRef ref) async {
 Future<void> databaseAddRecord(DatabaseAddRecordRef ref, {required DailyLog log}) async {
   (await ref.read(getDatabaseProvider.future)).addDocument(log.toJson());
   SerealLogger.info(message: 'Added/Updated record ${log.id}', name: 'Mimir');
-  // Don't invalidate database for writes -- unnecessary?
 }
+
