@@ -38,6 +38,7 @@ class LogWidget extends ConsumerWidget {
   }
 }
 
+// TODO Let's move to own files!
 class _LogWidgetContent extends ConsumerWidget {
   const _LogWidgetContent({required this.log});
 
