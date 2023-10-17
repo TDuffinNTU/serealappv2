@@ -5,5 +5,6 @@ class Sizing {
   static double m = 16;
   static double l = 20;
   static double xl = 32;
+  static double logHeaderMinHeight = 40;
   static double screenPadding = m;
 }

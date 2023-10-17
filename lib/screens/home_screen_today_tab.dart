@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:serealappv2/utils/datetime_extensions.dart';
-import 'package:serealappv2/widgets/log_widget.dart';
+import 'package:serealappv2/widgets/logs/log_widget.dart';
 
 /// Displays the daily logs. The dashboard of Sereal.
 class HomeScreenTodayTab extends ConsumerWidget {

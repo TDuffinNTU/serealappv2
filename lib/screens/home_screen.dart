@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:serealappv2/models/providers/database_providers.dart';
 import 'package:serealappv2/models/providers/theme_providers.dart';
-import 'package:serealappv2/widgets/sereal_navigation_bar.dart';
-import 'package:serealappv2/widgets/sereal_scaffold.dart';
-
+import 'package:serealappv2/widgets/common/sereal_navigation_bar.dart';
+import 'package:serealappv2/widgets/common/sereal_scaffold.dart';
 import 'home_screen_history_tab.dart';
 import 'home_screen_notes_tab.dart';
 import 'home_screen_today_tab.dart';
