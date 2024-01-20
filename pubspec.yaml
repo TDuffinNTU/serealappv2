@@ -20,7 +20,7 @@ version: 0.0.1
 
 environment:
   sdk: '^3.0.0'
-  flutter: '^3.7.12'
+  flutter: '^3.16.8'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -40,7 +40,7 @@ dependencies:
   jiffy: ^6.2.1
   mimir: ^0.0.1-dev.11
   flutter_mimir: ^0.0.1-dev.11
-  uuid: ^3.0.7
+  uuid: ^4.3.3
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.1
   flutter_riverpod: ^2.3.6
@@ -51,7 +51,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
   build_runner: ^2.3.3
   freezed: ^2.3.5
   json_serializable: ^6.6.2
