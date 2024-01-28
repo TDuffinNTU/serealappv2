@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:serealappv2/utils/sizing.dart';
 
 class LogNoteContainer extends StatelessWidget {
-  const LogNoteContainer({super.key, required this.text});
+  const LogNoteContainer({super.key, required this.text, required this.onNoteTapped});
 
   /// Content of the note.
   final String? text;
+
+  /// Called when note is tapped
+  final VoidCallback onNoteTapped;
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +24,18 @@ class LogNoteContainer extends StatelessWidget {
         ),
         borderRadius: const BorderRadius.all(Radius.circular(4)),
       ),
-      child: Container(
-        color: Theme.of(context).cardColor.withOpacity(0.7),
-        padding: EdgeInsets.all(Sizing.m),
-        constraints: BoxConstraints(minHeight: 200),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(text ?? ''),
-          ],
+      child: GestureDetector(
+        onTap: onNoteTapped,
+        child: Container(
+          color: Theme.of(context).cardColor.withOpacity(0.7),
+          padding: EdgeInsets.all(Sizing.m),
+          constraints: BoxConstraints(minHeight: 200),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(text ?? ''),
+            ],
+          ),
         ),
       ),
     );
