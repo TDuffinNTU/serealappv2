@@ -4,14 +4,11 @@ A Food diary and habit/task tracker app for people fed up with fitness and diet 
 
 ## Getting Started
 
-Requires flutter 3.7.12. Tied to whatever I'm running locally at the time for work.
+Requires flutter 3.16.9. Tied to whatever I'm running locally at the time for work or at home :shrug:
 
 ```
-# fetch packages
-flutter pub get
-
-# generate riverpod and freezed files
-flutter pub run build_runner build --delete-conflicting-outputs
+# run code generation with my nifty lil shell script
+./build
 
 # run the app
 flutter run
