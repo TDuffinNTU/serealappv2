@@ -173,33 +173,43 @@ class EditNoteContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: Sizing.screenPadding),
-      child: Center(
-        child: Hero(
-          tag: heroTag,
-          child: Card(
-            color: Theme.of(context).colorScheme.primaryContainer,
-            clipBehavior: Clip.hardEdge,
-            elevation: 0,
-            borderOnForeground: true,
-            shape: RoundedRectangleBorder(
-              side: BorderSide(
-                width: 4,
-                color: Theme.of(context).colorScheme.primaryContainer,
-              ),
-              borderRadius: const BorderRadius.all(Radius.circular(4)),
-            ),
-            child: TextField(
-              controller: TextEditingController(text: text),
-              maxLines: null,
-              minLines: 10,
-              decoration: InputDecoration(
-                fillColor: Theme.of(context).cardColor.withOpacity(0.7),
-                border: InputBorder.none,
-                constraints: BoxConstraints(minHeight: 200),
-              ),
-            ),
+    return GestureDetector(
+      onTap: () => Navigator.of(context).pop(),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+      
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: Sizing.screenPadding),
+          child: Center(
+            child: 
+                Hero(
+                  tag: heroTag,
+                  child: Card(
+                    color: Theme.of(context).colorScheme.primaryContainer,
+                    clipBehavior: Clip.hardEdge,
+                    elevation: 0,
+                    borderOnForeground: true,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        width: 4,
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                      ),
+                      borderRadius: const BorderRadius.all(Radius.circular(4)),
+                    ),
+                    child: TextFormField(
+                    
+                      controller: TextEditingController(text: text),
+                      maxLines: null,
+                      minLines: 10,
+                      decoration: InputDecoration(
+                        fillColor: Theme.of(context).cardColor.withOpacity(0.7),
+                        border: InputBorder.none,
+                      ),
+                    ),
+                  ),
+                ),
+              
+            
           ),
         ),
       ),
