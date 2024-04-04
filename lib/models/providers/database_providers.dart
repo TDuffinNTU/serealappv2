@@ -1,4 +1,3 @@
-
 import 'package:flutter_mimir/flutter_mimir.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:serealappv2/models/types/daily_log.dart';
@@ -36,5 +35,5 @@ Future<void> databaseClearRecords(DatabaseClearRecordsRef ref) async {
 Future<void> databaseAddRecord(DatabaseAddRecordRef ref, {required DailyLog log}) async {
   (await ref.read(getDatabaseProvider.future)).addDocument(log.toJson());
   SerealLogger.info(message: 'Added/Updated record ${log.id}', name: 'Mimir');
+  ref.invalidate(getDatabaseProvider);
 }
-

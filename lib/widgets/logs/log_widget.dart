@@ -8,8 +8,9 @@ import 'package:serealappv2/models/types/meal.dart';
 import 'package:serealappv2/models/types/todo.dart';
 import 'package:serealappv2/utils/datetime_extensions.dart';
 import 'package:serealappv2/utils/sizing.dart';
+import 'package:serealappv2/widgets/common/checkable_list_tile.dart';
 import 'package:serealappv2/widgets/logs/edit_note_dialog.dart';
-import 'package:serealappv2/widgets/logs/log_item_list.dart';
+import 'package:serealappv2/widgets/common/list_container.dart';
 import 'package:serealappv2/widgets/logs/log_note_container.dart';
 import 'package:serealappv2/widgets/logs/log_section_header.dart';
 
@@ -21,7 +22,6 @@ class LogWidget extends ConsumerWidget {
   /// Updates the log with new data. Triggers a rebuild.
   void _updateLog(WidgetRef ref, DailyLog updatedLog) {
     ref.read(databaseAddRecordProvider(log: updatedLog));
-    ref.invalidate(getDatabaseProvider);
   }
 
   @override
@@ -60,21 +60,22 @@ class LogWidget extends ConsumerWidget {
                             ),
                           ),
                         ),
-                        LogWidgetItemList(
-                          items: List.generate(
+                        ListContainer(
+                          children: List.generate(
                             log.meals.length,
-                            (index) => (
+                            (index) => CheckableLogTile(
+                              isLight: index % 2 == 0,
                               title: log.meals[index].name,
                               subtitle: log.meals[index].note,
                               isChecked: log.meals[index].complete,
                               onChecked: (checked) => _updateLog(
-                                    ref,
-                                    log.updateMeal(
-                                      index: index,
-                                      newMeal:
-                                          log.meals[index].copyWith(complete: checked ?? false),
-                                    ),
-                                  ),
+                                ref,
+                                log.updateMeal(
+                                  index: index,
+                                  newMeal: log.meals[index].copyWith(complete: checked!),
+                                ),
+                              ),
+                              image: null,
                             ),
                           ),
                         ),
@@ -91,21 +92,22 @@ class LogWidget extends ConsumerWidget {
                             ),
                           ),
                         ),
-                        LogWidgetItemList(
-                          items: List.generate(
+                        ListContainer(
+                          children: List.generate(
                             log.snacks.length,
-                            (index) => (
+                            (index) => CheckableLogTile(
+                              isLight: index % 2 == 0,
                               title: log.snacks[index].name,
                               subtitle: log.snacks[index].note,
                               isChecked: log.snacks[index].complete,
                               onChecked: (checked) => _updateLog(
-                                    ref,
-                                    log.updateSnack(
-                                      index: index,
-                                      newSnack:
-                                          log.snacks[index].copyWith(complete: checked ?? false),
-                                    ),
-                                  ),
+                                ref,
+                                log.updateSnack(
+                                  index: index,
+                                  newSnack: log.snacks[index].copyWith(complete: checked!),
+                                ),
+                              ),
+                              image: null,
                             ),
                           ),
                         ),
@@ -122,21 +124,22 @@ class LogWidget extends ConsumerWidget {
                             ),
                           ),
                         ),
-                        LogWidgetItemList(
-                          items: List.generate(
+                        ListContainer(
+                          children: List.generate(
                             log.todos.length,
-                            (index) => (
+                            (index) => CheckableLogTile(
+                              isLight: index % 2 == 0,
                               title: log.todos[index].name,
                               subtitle: null,
                               isChecked: log.todos[index].complete,
                               onChecked: (checked) => _updateLog(
-                                    ref,
-                                    log.updateTodo(
-                                      index: index,
-                                      newTodo:
-                                          log.todos[index].copyWith(complete: checked ?? false),
-                                    ),
-                                  ),
+                                ref,
+                                log.updateTodo(
+                                  index: index,
+                                  newTodo: log.todos[index].copyWith(complete: checked!),
+                                ),
+                              ),
+                              image: null,
                             ),
                           ),
                         ),

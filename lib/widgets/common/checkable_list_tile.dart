@@ -1,55 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:serealappv2/utils/string_extensions.dart';
 
-class LogWidgetItemList extends StatelessWidget {
-  const LogWidgetItemList({
-    required this.items,
-  });
-
-  /// List of records representing common data to display in list tiles.
-  ///
-  /// Saves use having to manage each element as its own list.
-  final List<
-      ({
-        String title,
-        String? subtitle,
-        bool isChecked,
-        Function(bool?) onChecked,
-      })> items;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      clipBehavior: Clip.hardEdge,
-      elevation: 0,
-      color: Theme.of(context).colorScheme.primaryContainer,
-      borderOnForeground: true,
-      shape: RoundedRectangleBorder(
-        side: BorderSide(
-          width: 4,
-          color: Theme.of(context).colorScheme.primaryContainer,
-        ),
-        borderRadius: const BorderRadius.all(Radius.circular(4)),
-      ),
-      child: Column(
-        children: List.generate(
-          items.length,
-          (index) => _LogListTile(
-            onChecked: items[index].onChecked,
-            isLight: index % 2 == 0,
-            isChecked: items[index].isChecked,
-            subtitle: items[index].subtitle,
-            title: items[index].title,
-            image: null,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _LogListTile extends StatelessWidget {
-  const _LogListTile({
+class CheckableLogTile extends StatelessWidget {
+  const CheckableLogTile({
     required this.isLight,
     required this.title,
     required this.subtitle,
