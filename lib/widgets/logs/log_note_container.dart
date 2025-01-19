@@ -22,7 +22,7 @@ class LogNoteContainer extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(4)),
       ),
       child: Container(
-        color: Theme.of(context).cardColor.withOpacity(0.7),
+        color: Theme.of(context).cardColor.withValues(alpha: 0.7),
         padding: EdgeInsets.all(Sizing.m),
         constraints: BoxConstraints(minHeight: 200),
         child: Row(

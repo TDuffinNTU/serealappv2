@@ -69,7 +69,7 @@ class _LogListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      color: isLight ? Theme.of(context).cardColor.withOpacity(0.7) : null,
+      color: isLight ? Theme.of(context).cardColor.withValues(alpha: 0.7) : null,
       child: Row(
         children: [
           SizedBox(width: 8),
@@ -77,7 +77,7 @@ class _LogListTile extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(2.0),
             ),
-            side: MaterialStateBorderSide.resolveWith(
+            side: WidgetStateBorderSide.resolveWith(
               (states) => BorderSide(
                 width: 2.0,
                 color: Theme.of(context).primaryColor,
@@ -96,7 +96,7 @@ class _LogListTile extends StatelessWidget {
                 Text(
                   subtitle!,
                   style: TextStyle(
-                    color: Theme.of(context).colorScheme.onPrimaryContainer.withOpacity(0.4),
+                    color: Theme.of(context).colorScheme.onPrimaryContainer.withValues(alpha: 0.4),
                   ),
                 ),
             ],

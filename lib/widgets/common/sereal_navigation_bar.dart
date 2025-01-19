@@ -36,7 +36,7 @@ class _SerealNavigationBarState extends State<SerealNavigationBar> {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       // Makes the bottom nav bar transparent so we dont have to see its ugly face.
       value: SystemUiOverlayStyle(
-        systemNavigationBarColor: Colors.black.withOpacity(0),
+        systemNavigationBarColor: Colors.black.withValues(alpha: 0),
       ),
       child: NavigationBar(
         destinations: [

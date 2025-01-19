@@ -1,4 +1,5 @@
 import 'package:flutter_mimir/flutter_mimir.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:serealappv2/models/providers/database_providers.dart';
 import 'package:serealappv2/models/types/daily_log.dart';
@@ -14,7 +15,7 @@ part 'log_providers.g.dart';
 /// A search may return no results, in which case an empty List<DailyLog>
 /// will be returned.
 @riverpod
-Future<List<DailyLog>> filteredLogs(FilteredLogsRef ref, {required Filter? filter}) async {
+Future<List<DailyLog>> filteredLogs(Ref ref, {required Filter? filter}) async {
   final MimirIndex db = await ref.watch(getDatabaseProvider.future);
   final List<MimirDocument> documents = await db.search(filter: filter);
 
@@ -24,7 +25,7 @@ Future<List<DailyLog>> filteredLogs(FilteredLogsRef ref, {required Filter? filte
 /// Returns the stored log for a given date,
 /// or a new log with the given date if none exists.
 @riverpod
-Future<DailyLog> getLog(GetLogRef ref, DateTime date) async {
+Future<DailyLog> getLog(Ref ref, DateTime date) async {
   final List<DailyLog> logs = await ref.watch(
     filteredLogsProvider(
       filter: Mimir.where(
