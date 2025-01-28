@@ -4,7 +4,7 @@ A Food diary and habit/task tracker app for people fed up with fitness and diet 
 
 ## Getting Started
 
-Requires flutter 3.16.9. Tied to whatever I'm running locally at the time for work or at home :shrug:
+Currently building against flutter 3.27.2.
 
 ```
 # run code generation with my nifty lil shell script
