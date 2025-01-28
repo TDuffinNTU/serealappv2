@@ -16,7 +16,7 @@ class HomeScreenTodayTab extends ConsumerWidget {
         LogWidget(date: DateTimeExtensions.today()),
         LogWidget(date: DateTimeExtensions.tomorrow()),
       ],
-      options: CarouselOptions(
+      options: FlutterCarouselOptions(
         initialPage: 1,
         height: double.infinity,
         showIndicator: false,

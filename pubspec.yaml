@@ -36,26 +36,26 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   #cupertino_icons: ^1.0.2
-  flutter_carousel_widget: ^2.0.4
+  flutter_carousel_widget: ^3.1.0
   jiffy: ^6.2.1
-  mimir: ^0.0.1-dev.11
-  flutter_mimir: ^0.0.1-dev.11
+  mimir: ^0.1.6
+  flutter_mimir: ^0.1.6
   uuid: ^4.3.3
   freezed_annotation: ^2.2.0
-  json_annotation: ^4.8.1
+  json_annotation: ^4.9.0
   flutter_riverpod: ^2.3.6
   riverpod_annotation: ^2.1.1
-  flex_color_scheme: ^7.2.0
+  flex_color_scheme: ^8.1.0
   google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.1
+  flutter_lints: ^5.0.0
   build_runner: ^2.3.3
   freezed: ^2.3.5
   json_serializable: ^6.6.2
-  custom_lint: ^0.5.3
+  custom_lint: ^0.7.1
   riverpod_generator: ^2.2.3
   riverpod_lint: ^2.1.1
 
