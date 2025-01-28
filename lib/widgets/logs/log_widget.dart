@@ -157,7 +157,7 @@ class LogWidget extends ConsumerWidget {
                               PageRouteBuilder(
                                 barrierDismissible: true,
                                 opaque: false,
-                                barrierColor: Colors.black.withOpacity(0.5),
+                                barrierColor: Colors.black.withValues(alpha: 0.5),
                                 pageBuilder: (_, __, ___) => EditNoteDialog(
                                   heroTag: log.id,
                                   text: log.note.content ?? '',

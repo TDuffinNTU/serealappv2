@@ -35,7 +35,7 @@ class EditNoteDialog extends StatelessWidget {
                   maxLines: null,
                   minLines: 10,
                   decoration: InputDecoration(
-                    fillColor: Theme.of(context).cardColor.withOpacity(0.7),
+                    fillColor: Theme.of(context).cardColor.withValues(alpha: 0.7),
                     border: InputBorder.none,
                   ),
                 ),
