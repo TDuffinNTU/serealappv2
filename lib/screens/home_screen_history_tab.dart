@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:serealappv2/models/providers/database_providers.dart';
 import 'package:serealappv2/models/providers/log_providers.dart';
-import 'package:serealappv2/models/types/daily_log.dart';
 import 'package:serealappv2/utils/sizing.dart';
 import 'package:serealappv2/widgets/common/tonal_button_danger.dart';
 
@@ -32,42 +31,32 @@ class HomeScreenHistoryTab extends ConsumerWidget {
                         ),
                       ),
                     ),
-                    ...List.generate(
-                      data.length,
-                      (index) {
-                        final DailyLog log = data[index];
-                        return Card(
-                          child: Padding(
-                            padding: EdgeInsets.all(Sizing.s),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Align(
-                                  alignment: Alignment.topRight,
-                                  child: TonalButtonDanger(
-                                    onPressed: () => ref.read(
-                                      databaseDeleteRecordProvider(log: log),
-                                    ),
-                                    icon: Icon(Icons.delete_outline),
-                                  ),
+                    ...data.map(
+                      (log) => Card(
+                        child: Padding(
+                          padding: EdgeInsets.all(Sizing.s),
+                          child: Column(
+                            spacing: Sizing.s,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Align(
+                                alignment: Alignment.topRight,
+                                child: TonalButtonDanger(
+                                  onPressed: () => ref.read(databaseDeleteRecordProvider(log: log)),
+                                  icon: Icon(Icons.delete_outline),
                                 ),
-                                Text(log.id),
-                                SizedBox(height: Sizing.s),
-                                Text(log.date.toString()),
-                                SizedBox(height: Sizing.s),
-                                Text(log.meals.toString()),
-                                SizedBox(height: Sizing.s),
-                                Text(log.snacks.toString()),
-                                SizedBox(height: Sizing.s),
-                                Text(log.todos.toString()),
-                                SizedBox(height: Sizing.s),
-                                Text(log.note.toString()),
-                              ],
-                            ),
+                              ),
+                              Text(log.id),
+                              Text(log.date.toString()),
+                              Text(log.meals.toString()),
+                              Text(log.snacks.toString()),
+                              Text(log.todos.toString()),
+                              Text(log.note.toString()),
+                            ],
                           ),
-                        );
-                      },
-                    ),
+                        ),
+                      ),
+                    )
                   ]),
               error: (Object error, StackTrace stackTrace) => null,
               loading: () => CircularProgressIndicator(),
