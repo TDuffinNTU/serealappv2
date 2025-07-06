@@ -26,9 +26,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   late Widget selectedTab = homeScreenTabs[1];
 
   void selectTab(int tab) {
-    setState(() {
-      selectedTab = homeScreenTabs[tab];
-    });
+    setState(() => selectedTab = homeScreenTabs[tab]);
   }
 
   @override
@@ -37,9 +35,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       appBarActions: [
         IconButton(
           icon: Icon(Icons.delete_forever),
-          onPressed: () {
-            ref.read(databaseClearRecordsProvider);
-          },
+          onPressed: () => ref.read(databaseClearRecordsProvider),
         ),
         IconButton(
           icon: Icon(
@@ -47,9 +43,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ? Icons.light_mode
                 : Icons.dark_mode,
           ),
-          onPressed: () {
-            ref.read(appBrightnessProvider.notifier).toggle();
-          },
+          onPressed: ref.read(appBrightnessProvider.notifier).toggle,
         ),
       ],
       title: 'Welcome!',

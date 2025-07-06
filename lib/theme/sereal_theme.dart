@@ -35,7 +35,7 @@ class SerealTheme {
         surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
         appBarStyle: FlexAppBarStyle.background,
         blendLevel: 13,
-        subThemesData:  FlexSubThemesData(
+        subThemesData: FlexSubThemesData(
           blendOnLevel: 20,
           useMaterial3Typography: true,
           useM2StyleDividerInM3: true,
