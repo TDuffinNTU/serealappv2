@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:serealappv2/models/providers/database_providers.dart';
-import 'package:serealappv2/models/providers/log_providers.dart';
+import 'package:serealappv2/domain/services/database_providers.dart';
+import 'package:serealappv2/domain/services/log_providers.dart';
 import 'package:serealappv2/utils/sizing.dart';
-import 'package:serealappv2/widgets/common/tonal_button_danger.dart';
+import 'package:serealappv2/presentation/common/widgets/tonal_button_danger.dart';
 
-class HomeScreenHistoryTab extends ConsumerWidget {
-  const HomeScreenHistoryTab({super.key});
+class HistoryTab extends ConsumerWidget {
+  const HistoryTab({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -42,7 +42,8 @@ class HomeScreenHistoryTab extends ConsumerWidget {
                               Align(
                                 alignment: Alignment.topRight,
                                 child: TonalButtonDanger(
-                                  onPressed: () => ref.read(databaseDeleteRecordProvider(log: log)),
+                                  onPressed: () =>
+                                      ref.read(databaseDeleteRecordProvider(id: log.id)),
                                   icon: Icon(Icons.delete_outline),
                                 ),
                               ),

@@ -20,7 +20,7 @@ version: 0.0.1
 
 environment:
   sdk: '^3.0.0'
-  flutter: '^3.16.8'
+  flutter: '<3.36.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -38,24 +38,27 @@ dependencies:
   #cupertino_icons: ^1.0.2
   flutter_carousel_widget: ^3.1.0
   jiffy: ^6.2.1
-  mimir: ^0.1.6
-  flutter_mimir: ^0.1.6
   uuid: ^4.3.3
-  freezed_annotation: ^2.2.0
+  freezed_annotation: ^3.1.0
   json_annotation: ^4.9.0
   flutter_riverpod: ^2.3.6
   riverpod_annotation: ^2.1.1
   flex_color_scheme: ^8.1.0
   google_fonts: ^6.1.0
+  flutter_colorpicker: ^1.1.0
+  objectbox: ^4.3.0
+  objectbox_flutter_libs: ^4.3.0
+  path_provider: ^2.1.5
+  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
+  objectbox_generator: ^4.3.0
   build_runner: ^2.3.3
-  freezed: ^2.3.5
+  freezed: ^3.1.0
   json_serializable: ^6.6.2
-  custom_lint: ^0.7.1
   riverpod_generator: ^2.2.3
   riverpod_lint: ^2.1.1
 

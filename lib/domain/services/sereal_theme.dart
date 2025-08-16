@@ -4,8 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 /// The custom theme for Sereal App.
 class SerealTheme {
-  ThemeData get lightTheme => FlexThemeData.light(
-        colorScheme: colorScheme,
+  static ThemeData lightTheme(Color color) => FlexThemeData.light(
+        colorScheme: SeedColorScheme.fromSeeds(primaryKey: color),
         scheme: FlexScheme.brandBlue,
         surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
         blendLevel: 15,
@@ -30,8 +30,8 @@ class SerealTheme {
         fontFamily: GoogleFonts.notoSans().fontFamily,
       );
 
-  ThemeData get darkTheme => FlexThemeData.dark(
-        colorScheme: colorScheme,
+  static ThemeData darkTheme(Color color) => FlexThemeData.dark(
+        colorScheme: SeedColorScheme.fromSeeds(primaryKey: color),
         surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
         appBarStyle: FlexAppBarStyle.background,
         blendLevel: 13,
@@ -54,6 +54,5 @@ class SerealTheme {
         fontFamily: GoogleFonts.notoSans().fontFamily,
       );
 
-  /// TODO use a provider to manage this bad boy
-  ColorScheme get colorScheme => SeedColorScheme.fromSeeds(primaryKey: Color(0xFF5D6CBD));
+  static Color get defaultColor => Color(0xFF5D6CBD);
 }

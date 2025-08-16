@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:serealappv2/models/providers/log_providers.dart';
+import 'package:serealappv2/domain/services/log_providers.dart';
 import 'package:jiffy/jiffy.dart';
-import 'package:serealappv2/models/providers/database_providers.dart';
-import 'package:serealappv2/models/types/daily_log.dart';
-import 'package:serealappv2/models/types/meal.dart';
-import 'package:serealappv2/models/types/todo.dart';
+import 'package:serealappv2/domain/services/database_providers.dart';
+import 'package:serealappv2/domain/entities/daily_log.dart';
+import 'package:serealappv2/domain/entities/meal.dart';
+import 'package:serealappv2/domain/entities/todo.dart';
 import 'package:serealappv2/utils/datetime_extensions.dart';
 import 'package:serealappv2/utils/sizing.dart';
-import 'package:serealappv2/widgets/common/checkable_list_tile.dart';
-import 'package:serealappv2/widgets/logs/edit_note_dialog.dart';
-import 'package:serealappv2/widgets/common/list_container.dart';
-import 'package:serealappv2/widgets/logs/log_note_container.dart';
-import 'package:serealappv2/widgets/logs/log_section_header.dart';
+import 'package:serealappv2/presentation/today_tab/widgets/checkable_list_tile.dart';
+import 'package:serealappv2/presentation/today_tab/widgets/log_note_container.dart';
+import 'package:serealappv2/presentation/today_tab/widgets/log_section_header.dart';
+import 'package:serealappv2/presentation/edit_note_dialog/widgets/edit_note_dialog.dart';
+import 'package:serealappv2/presentation/today_tab/widgets/list_container.dart';
 
 class LogWidget extends ConsumerWidget {
   const LogWidget({super.key, required this.date});
@@ -21,7 +21,11 @@ class LogWidget extends ConsumerWidget {
 
   /// Updates the log with new data. Triggers a rebuild.
   void _updateLog(WidgetRef ref, DailyLog updatedLog) {
-    ref.read(databaseAddRecordProvider(log: updatedLog));
+    ref.read(databaseAddRecordProvider(
+      id: updatedLog.id,
+      data: updatedLog.toJson(),
+      table: 'logs',
+    ));
   }
 
   @override

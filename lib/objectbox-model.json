@@ -1,0 +1,121 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:8786472259278449503",
+      "lastPropertyId": "2:3752977163789443734",
+      "name": "Log",
+      "properties": [
+        {
+          "id": "1:5080504096366780479",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:3752977163789443734",
+          "name": "date",
+          "type": 10
+        }
+      ],
+      "relations": [
+        {
+          "id": "1:2772623330061526145",
+          "name": "notes",
+          "targetId": "2:8981815131053658009"
+        },
+        {
+          "id": "3:1596020965495988804",
+          "name": "tasks",
+          "targetId": "3:2727184448443163951"
+        }
+      ]
+    },
+    {
+      "id": "2:8981815131053658009",
+      "lastPropertyId": "2:1372921611245186420",
+      "name": "Note",
+      "properties": [
+        {
+          "id": "1:953230152574571837",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:1372921611245186420",
+          "name": "content",
+          "type": 9
+        }
+      ],
+      "relations": [
+        {
+          "id": "2:4406211241147723194",
+          "name": "logs",
+          "targetId": "1:8786472259278449503"
+        }
+      ]
+    },
+    {
+      "id": "3:2727184448443163951",
+      "lastPropertyId": "3:9081375505012306067",
+      "name": "Task",
+      "properties": [
+        {
+          "id": "1:4424447548263944287",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:2191014623044586716",
+          "name": "completed",
+          "type": 1
+        },
+        {
+          "id": "3:9081375505012306067",
+          "name": "task",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "4:4129956753243766643",
+      "lastPropertyId": "3:7767166709376666409",
+      "name": "Theme",
+      "properties": [
+        {
+          "id": "1:896607922459944478",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:792451412844421637",
+          "name": "isDark",
+          "type": 1
+        },
+        {
+          "id": "3:7767166709376666409",
+          "name": "seedColor",
+          "type": 6
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "4:4129956753243766643",
+  "lastIndexId": "0:0",
+  "lastRelationId": "3:1596020965495988804",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
