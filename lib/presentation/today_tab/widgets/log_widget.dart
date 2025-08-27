@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:serealappv2/domain/services/log_providers.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:serealappv2/domain/services/database_providers.dart';
-import 'package:serealappv2/domain/entities/daily_log.dart';
+import 'package:serealappv2/domain/data/daily_log.dart';
 import 'package:serealappv2/domain/entities/meal.dart';
 import 'package:serealappv2/domain/entities/todo.dart';
 import 'package:serealappv2/utils/datetime_extensions.dart';

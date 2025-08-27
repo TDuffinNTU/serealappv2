@@ -8,7 +8,7 @@ class Theme {
   });
 
   @Id()
-  int id = 0;
+  int id = 1;
 
   bool isDark;
   int seedColor;

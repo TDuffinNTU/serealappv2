@@ -1,4 +1,5 @@
 import 'package:objectbox/objectbox.dart';
+import 'package:serealappv2/data/daily_logs/daily_log_dto.dart';
 
 @Entity()
 class Task {
@@ -12,4 +13,6 @@ class Task {
 
   final bool completed;
   final String task;
+
+  final ToOne<DailyLog> logs = ToOne();
 }
