@@ -1,8 +1,8 @@
 import 'package:objectbox/objectbox.dart';
 
 @Entity()
-class Theme {
-  Theme({
+class SerealTheme {
+  SerealTheme({
     this.isDark = false,
     required this.seedColor,
   });

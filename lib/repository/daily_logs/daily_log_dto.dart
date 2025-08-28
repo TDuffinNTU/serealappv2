@@ -1,7 +1,7 @@
 import 'package:objectbox/objectbox.dart';
 
-import 'package:serealappv2/data/notes/note_dto.dart';
-import 'package:serealappv2/data/tasks/task_dto.dart';
+import 'package:serealappv2/repository/notes/note_dto.dart';
+import 'package:serealappv2/repository/tasks/task_dto.dart';
 
 @Entity()
 class DailyLog {

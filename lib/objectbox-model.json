@@ -76,30 +76,6 @@
       "relations": []
     },
     {
-      "id": "4:4129956753243766643",
-      "lastPropertyId": "3:7767166709376666409",
-      "name": "Theme",
-      "properties": [
-        {
-          "id": "1:896607922459944478",
-          "name": "id",
-          "type": 6,
-          "flags": 1
-        },
-        {
-          "id": "2:792451412844421637",
-          "name": "isDark",
-          "type": 1
-        },
-        {
-          "id": "3:7767166709376666409",
-          "name": "seedColor",
-          "type": 6
-        }
-      ],
-      "relations": []
-    },
-    {
       "id": "5:1806661971349379101",
       "lastPropertyId": "2:6278273844324694163",
       "name": "DailyLog",
@@ -128,21 +104,49 @@
           "targetId": "3:2727184448443163951"
         }
       ]
+    },
+    {
+      "id": "6:5551033365764678433",
+      "lastPropertyId": "3:2793503296244641849",
+      "name": "SerealTheme",
+      "properties": [
+        {
+          "id": "1:8759382147986242255",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:8970757307002721751",
+          "name": "isDark",
+          "type": 1
+        },
+        {
+          "id": "3:2793503296244641849",
+          "name": "seedColor",
+          "type": 6
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "5:1806661971349379101",
+  "lastEntityId": "6:5551033365764678433",
   "lastIndexId": "1:2868316441191801056",
   "lastRelationId": "5:5028133952572380160",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
   "modelVersionParserMinimum": 5,
   "retiredEntityUids": [
-    8786472259278449503
+    8786472259278449503,
+    4129956753243766643
   ],
   "retiredIndexUids": [],
   "retiredPropertyUids": [
     5080504096366780479,
-    3752977163789443734
+    3752977163789443734,
+    896607922459944478,
+    792451412844421637,
+    7767166709376666409
   ],
   "retiredRelationUids": [],
   "version": 1

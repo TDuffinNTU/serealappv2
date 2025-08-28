@@ -1,5 +1,5 @@
-import 'package:serealappv2/data/common/repository.dart';
-import 'package:serealappv2/data/daily_logs/daily_log_dto.dart';
+import 'package:serealappv2/repository/common/repository.dart';
+import 'package:serealappv2/repository/daily_logs/daily_log_dto.dart';
 import 'package:serealappv2/objectbox.g.dart';
 
 final class DailyLogRepository extends Repository<DailyLog> with CrudRepositoryMixin<DailyLog> {

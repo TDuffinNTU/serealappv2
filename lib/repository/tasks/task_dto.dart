@@ -1,5 +1,5 @@
 import 'package:objectbox/objectbox.dart';
-import 'package:serealappv2/data/daily_logs/daily_log_dto.dart';
+import 'package:serealappv2/repository/daily_logs/daily_log_dto.dart';
 
 @Entity()
 class Task {

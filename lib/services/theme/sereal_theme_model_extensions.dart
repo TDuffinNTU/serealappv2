@@ -1,12 +1,15 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:serealappv2/services/theme/sereal_theme_model.dart';
+
+const Color kDefaultSeedColor = Color(0xFF5D6CBD);
 
 /// The custom theme for Sereal App.
-class SerealTheme {
-  static ThemeData lightTheme(Color color) => FlexThemeData.light(
-        colorScheme: SeedColorScheme.fromSeeds(primaryKey: color),
-        scheme: FlexScheme.brandBlue,
+extension SerealThemeModelExtensions on SerealTheme {
+  ThemeData get lightTheme => FlexThemeData.light(
+        colorScheme: SeedColorScheme.fromSeeds(primaryKey: seedColor),
+        // scheme: FlexScheme.brandBlue, // Not sure why this is here tbh?
         surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
         blendLevel: 15,
         appBarStyle: FlexAppBarStyle.primary,
@@ -30,8 +33,8 @@ class SerealTheme {
         fontFamily: GoogleFonts.notoSans().fontFamily,
       );
 
-  static ThemeData darkTheme(Color color) => FlexThemeData.dark(
-        colorScheme: SeedColorScheme.fromSeeds(primaryKey: color),
+  ThemeData get darkTheme => FlexThemeData.dark(
+        colorScheme: SeedColorScheme.fromSeeds(primaryKey: seedColor),
         surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
         appBarStyle: FlexAppBarStyle.background,
         blendLevel: 13,
@@ -53,6 +56,4 @@ class SerealTheme {
         swapLegacyOnMaterial3: true,
         fontFamily: GoogleFonts.notoSans().fontFamily,
       );
-
-  static Color get defaultColor => Color(0xFF5D6CBD);
 }

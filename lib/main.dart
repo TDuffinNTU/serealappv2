@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:serealappv2/domain/services/theme_providers.dart';
-import 'package:serealappv2/domain/services/sereal_theme.dart';
+import 'package:serealappv2/services/theme/theme_service.dart';
+import 'package:serealappv2/services/theme/sereal_theme_model_extensions.dart';
 import 'package:serealappv2/presentation/common/widgets/sereal_navigation_bar.dart';
 import 'package:serealappv2/presentation/common/widgets/sereal_scaffold.dart';
 import 'presentation/history_tab/widgets/history_tab.dart';

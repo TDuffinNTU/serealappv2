@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:serealappv2/domain/services/sereal_theme.dart';
+import 'package:serealappv2/services/theme/sereal_theme_model_extensions.dart';
 
 class NotesTab extends StatelessWidget {
   const NotesTab({super.key});
