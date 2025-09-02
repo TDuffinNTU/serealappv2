@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:serealappv2/repository/common/repository.dart';
-import 'package:serealappv2/repository/database.dart';
+import 'package:serealappv2/repository/common/database.dart';
 import 'package:serealappv2/repository/theme/theme_dto.dart';
 
 part 'theme_repository.g.dart';

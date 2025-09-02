@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:serealappv2/utils/sizing.dart';
+import 'package:serealappv2/presentation/theme/utils/sizing.dart' as sizing;
 
 class LogNoteContainer extends StatelessWidget {
   const LogNoteContainer({super.key, required this.text, required this.onNoteTapped});
@@ -28,7 +28,7 @@ class LogNoteContainer extends StatelessWidget {
         onTap: onNoteTapped,
         child: Container(
           color: Theme.of(context).cardColor.withValues(alpha: 0.7),
-          padding: EdgeInsets.all(Sizing.m),
+          padding: EdgeInsets.all(sizing.m),
           constraints: BoxConstraints(minHeight: 200),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,

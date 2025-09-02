@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:serealappv2/utils/sizing.dart';
+import 'package:serealappv2/presentation/theme/utils/sizing.dart' as sizing;
 
 class EditNoteDialog extends StatelessWidget {
   const EditNoteDialog({super.key, required this.heroTag, required this.text});
@@ -14,7 +14,7 @@ class EditNoteDialog extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: Sizing.screenPadding),
+          padding: const EdgeInsets.symmetric(horizontal: sizing.screenPadding),
           child: Center(
             child: Hero(
               tag: heroTag,

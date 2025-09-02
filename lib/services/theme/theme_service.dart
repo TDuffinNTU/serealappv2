@@ -4,7 +4,7 @@ import 'package:serealappv2/repository/theme/theme_dto.dart' as repo;
 import 'package:serealappv2/repository/theme/theme_mapper.dart' as mapper;
 import 'package:serealappv2/repository/theme/theme_repository.dart';
 import 'package:serealappv2/services/theme/sereal_theme_model.dart';
-import 'package:serealappv2/services/theme/sereal_theme_model_extensions.dart';
+import 'package:serealappv2/presentation/theme/utils/sereal_flex_theme.dart';
 import 'package:serealappv2/utils/brightness_extensions.dart';
 
 part 'theme_service.g.dart';

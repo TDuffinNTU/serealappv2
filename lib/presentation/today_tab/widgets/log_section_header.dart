@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:serealappv2/utils/sizing.dart';
+import 'package:serealappv2/presentation/theme/utils/sizing.dart' as sizing;
 
 class LogSectionHeader extends StatelessWidget {
   const LogSectionHeader({
@@ -14,7 +14,7 @@ class LogSectionHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       // Account for fact buttons are slightly taller than title text.
-      constraints: BoxConstraints(minHeight: Sizing.logHeaderMinHeight),
+      constraints: BoxConstraints(minHeight: sizing.logHeaderMinHeight),
       child: IntrinsicHeight(
         child: Stack(
           children: [
