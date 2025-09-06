@@ -14,7 +14,6 @@ base class ThemeRepository extends Repository<SerealTheme> {
   }
 
   Future<void> put(SerealTheme value) {
-    value.id = 1;
     return box.putAsync(value);
   }
 }
