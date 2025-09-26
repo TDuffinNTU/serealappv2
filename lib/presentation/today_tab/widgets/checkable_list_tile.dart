@@ -16,7 +16,7 @@ class CheckableLogTile extends StatelessWidget {
   final String? subtitle;
   final bool isChecked;
   final String? image;
-  final Function(bool?)? onChecked;
+  final void Function(bool?)? onChecked;
 
   @override
   Widget build(BuildContext context) {

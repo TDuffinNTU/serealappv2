@@ -61,6 +61,7 @@ dev_dependencies:
   json_serializable: ^6.6.2
   riverpod_generator: ^3.0.0-dev.17
   riverpod_lint: ^3.0.0-dev.17
+  very_good_analysis: ^10.0.0
 
 # Until objectbox gets their shit together.
 dependency_overrides: 

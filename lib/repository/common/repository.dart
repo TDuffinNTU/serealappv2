@@ -6,16 +6,24 @@ base class Repository<T> {
   final Box<T> box;
 }
 
-base mixin CrudRepositoryMixin<T> on Repository<T> {
-  Future<void> delete(int id) {
-    return box.removeAsync(id);
-  }
+base mixin DeleteMixin<T> on Repository<T> {
+  Future<void> delete(T obj);
+}
 
-  Future<List<T>> getAll() {
-    return box.getAllAsync();
+base mixin GetAllMixin<T> on Repository<T> {
+  Future<List<T>> getAll() async {
+    return await box.getAllAsync();
   }
+}
 
-  Future<T> save(T value) {
-    return box.putAndGetAsync(value);
+base mixin GetByIdMixin<T> on Repository<T> {
+  Future<T?> getById(int id) async {
+    return await box.getAsync(id);
+  }
+}
+
+base mixin SaveObjectMixin<T> on Repository<T> {
+  Future<void> saveObject(T obj) async {
+    await box.putAsync(obj);
   }
 }
