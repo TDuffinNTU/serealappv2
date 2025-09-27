@@ -9,6 +9,7 @@ class CheckableLogTile extends StatelessWidget {
     required this.isChecked,
     required this.onChecked,
     required this.image,
+    super.key,
   });
 
   final bool isLight;
@@ -25,21 +26,21 @@ class CheckableLogTile extends StatelessWidget {
       color: isLight ? Theme.of(context).cardColor.withValues(alpha: 0.7) : null,
       child: Row(
         children: [
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           Checkbox(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(2.0),
+              borderRadius: BorderRadius.circular(2),
             ),
             side: WidgetStateBorderSide.resolveWith(
               (states) => BorderSide(
-                width: 2.0,
+                width: 2,
                 color: Theme.of(context).primaryColor,
               ),
             ),
             value: isChecked,
             onChanged: onChecked,
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,11 +55,11 @@ class CheckableLogTile extends StatelessWidget {
                 ),
             ],
           ),
-          Spacer(),
+          const Spacer(),
           if (image != null)
             Align(
               child: ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: 110),
+                constraints: const BoxConstraints(maxWidth: 110),
                 child: Image(
                   width: 110,
                   fit: BoxFit.cover,
@@ -67,7 +68,7 @@ class CheckableLogTile extends StatelessWidget {
                     width: 200,
                     height: 200,
                   ),
-                  image: NetworkImage('https://picsum.photos/id/${500}/200/200'),
+                  image: const NetworkImage('https://picsum.photos/id/${500}/200/200'),
                 ),
               ),
             ),

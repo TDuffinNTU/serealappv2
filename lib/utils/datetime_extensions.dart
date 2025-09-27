@@ -1,5 +1,5 @@
 extension DateTimeExtensions on DateTime {
-  DateTime get dateOnly => this.copyWith(
+  DateTime get dateOnly => copyWith(
         hour: 0,
         second: 0,
         minute: 0,
@@ -7,9 +7,15 @@ extension DateTimeExtensions on DateTime {
         microsecond: 0,
       );
 
-  String get databaseType => this.dateOnly.toIso8601String();
+  String get databaseType => dateOnly.toIso8601String();
 
   static DateTime today() => DateTime.now();
-  static DateTime tomorrow() => DateTime.now().dateOnly.add(Duration(days: 1));
-  static DateTime yesterday() => DateTime.now().dateOnly.subtract(Duration(days: 1));
+
+  static DateTime tomorrow() {
+    return DateTime.now().dateOnly.add(const Duration(days: 1));
+  }
+
+  static DateTime yesterday() {
+    return DateTime.now().dateOnly.subtract(const Duration(days: 1));
+  }
 }

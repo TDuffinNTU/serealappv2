@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// Wraps some fancy decorations around a list of widgets.
 class ListContainer extends StatelessWidget {
-  const ListContainer({super.key, required this.children});
+  const ListContainer({required this.children, super.key});
 
   final List<Widget> children;
 
@@ -12,7 +12,6 @@ class ListContainer extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       elevation: 0,
       color: Theme.of(context).colorScheme.primaryContainer,
-      borderOnForeground: true,
       shape: RoundedRectangleBorder(
         side: BorderSide(
           width: 4,

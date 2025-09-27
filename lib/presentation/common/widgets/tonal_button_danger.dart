@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 
 class TonalButtonDanger extends StatelessWidget {
   const TonalButtonDanger({
-    super.key,
-    required this.icon,
-    required this.onPressed,
+    required this.icon, required this.onPressed, super.key,
   });
 
   final Widget icon;

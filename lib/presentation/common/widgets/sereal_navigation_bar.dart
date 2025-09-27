@@ -3,12 +3,12 @@ import 'package:flutter/services.dart';
 
 class SerealNavigationBar extends StatefulWidget {
   const SerealNavigationBar({
-    super.key,
     required this.onTabSelected,
     required this.initialTab,
+    super.key,
   });
 
-  final Function(int) onTabSelected;
+  final void Function(int) onTabSelected;
   final int initialTab;
 
   @override
@@ -39,7 +39,7 @@ class _SerealNavigationBarState extends State<SerealNavigationBar> {
         systemNavigationBarColor: Colors.black.withValues(alpha: 0),
       ),
       child: NavigationBar(
-        destinations: [
+        destinations: const [
           NavigationDestination(
             label: 'Notes',
             icon: Icon(Icons.sticky_note_2),

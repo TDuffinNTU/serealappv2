@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,7 +21,7 @@ class _ColorPickerDialogButtonState extends ConsumerState<ColorPickerDialogButto
   Widget build(BuildContext context) {
     final theme = ref.watch(themeServiceProvider);
     return IconButton(
-      icon: Icon(Icons.color_lens),
+      icon: const Icon(Icons.color_lens),
       onPressed: () => showDialog<void>(
         context: context,
         builder: (context) => AlertDialog(
@@ -27,7 +29,7 @@ class _ColorPickerDialogButtonState extends ConsumerState<ColorPickerDialogButto
             mainAxisSize: MainAxisSize.min,
             children: [
               ColorPicker(
-                pickerAreaBorderRadius: BorderRadius.all(Radius.elliptical(16, 16)),
+                pickerAreaBorderRadius: const BorderRadius.all(Radius.elliptical(16, 16)),
                 pickerColor: theme.color,
                 onColorChanged: (c) => setState(
                   () {
@@ -39,19 +41,21 @@ class _ColorPickerDialogButtonState extends ConsumerState<ColorPickerDialogButto
           ),
           actions: [
             TextButton(
-              child: Text('Save'),
+              child: const Text('Save'),
               onPressed: () {
-                ref.read(themeServiceProvider.notifier).update(
-                      (old) => old.copyWith(
-                        color: col,
+                unawaited(
+                  ref.read(themeServiceProvider.notifier).update(
+                        (old) => old.copyWith(
+                          color: col,
+                        ),
                       ),
-                    );
+                );
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
               onPressed: Navigator.of(context).pop,
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
             ),
           ],
         ),

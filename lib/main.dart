@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,7 +17,7 @@ import 'package:serealappv2/utils/sereal_logger.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(ProviderScope(child: const MyApp()));
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends ConsumerWidget with SerealLoggerMixin {
@@ -23,7 +25,7 @@ class MyApp extends ConsumerWidget with SerealLoggerMixin {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    unawaited(SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge));
 
     final theme = ref.watch(themeServiceProvider);
     logInfo(theme.toString());
@@ -48,7 +50,7 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   final List<Widget> homeScreenTabs = [
-    NotesTab(),
+    const NotesTab(),
     // TodayTab(),
     // HistoryTab(),
   ];
@@ -63,12 +65,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SerealScaffold(
-      appBarActions: [
+      appBarActions: const [
         BrighnessToggleButton(),
         ColorPickerDialogButton(),
       ],
       title: 'Hello world!',
-      body: NotesTab(),
+      body: const NotesTab(),
       bottomNavigationBar: SerealNavigationBar(
         onTabSelected: selectTab,
         initialTab: 0,

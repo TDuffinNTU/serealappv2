@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:serealappv2/presentation/theme/utils/sizing.dart' as sizing;
 
 class EditNoteDialog extends StatelessWidget {
-  const EditNoteDialog({super.key, required this.heroTag, required this.text});
+  const EditNoteDialog({required this.heroTag, required this.text, super.key});
 
   final String heroTag;
   final String text;
@@ -22,7 +22,6 @@ class EditNoteDialog extends StatelessWidget {
                 color: Theme.of(context).colorScheme.primaryContainer,
                 clipBehavior: Clip.hardEdge,
                 elevation: 0,
-                borderOnForeground: true,
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
                     width: 4,
@@ -35,7 +34,9 @@ class EditNoteDialog extends StatelessWidget {
                   maxLines: null,
                   minLines: 10,
                   decoration: InputDecoration(
-                    fillColor: Theme.of(context).cardColor.withValues(alpha: 0.7),
+                    fillColor: Theme.of(context).cardColor.withValues(
+                          alpha: 0.7,
+                        ),
                     border: InputBorder.none,
                   ),
                 ),

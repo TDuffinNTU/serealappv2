@@ -32,7 +32,7 @@ mixin SerealLoggerMixin {
   void logInfo(String message) {
     log(
       message,
-      name: '<I> ' + this.runtimeType.toString(),
+      name: '<I> $runtimeType',
       time: DateTime.now(),
     );
   }
@@ -44,7 +44,7 @@ mixin SerealLoggerMixin {
   }) {
     log(
       message,
-      name: '<E> ' + this.runtimeType.toString(),
+      name: '<E> $runtimeType',
       stackTrace: stacktrace,
       error: error,
       time: DateTime.now(),

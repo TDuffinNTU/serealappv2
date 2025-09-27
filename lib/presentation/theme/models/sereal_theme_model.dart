@@ -11,11 +11,13 @@ class SerealTheme with _$SerealTheme {
     required this.mode,
   });
 
-  factory SerealTheme.defaultTheme() => SerealTheme(
+  factory SerealTheme.defaultTheme() => const SerealTheme(
         color: SerealFlexTheme.defaultSeedColor,
         mode: ThemeMode.system,
       );
 
+  @override
   final Color color;
+  @override
   final ThemeMode mode;
 }

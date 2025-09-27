@@ -4,8 +4,7 @@ import 'package:serealappv2/repository/daily_logs/daily_log_dto.dart';
 @Entity()
 class Task {
   Task({
-    this.completed = false,
-    required this.task,
+    required this.task, this.completed = false,
   });
 
   @Id()

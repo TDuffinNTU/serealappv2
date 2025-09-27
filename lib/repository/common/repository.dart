@@ -12,13 +12,13 @@ base mixin DeleteMixin<T> on Repository<T> {
 
 base mixin GetAllMixin<T> on Repository<T> {
   Future<List<T>> getAll() async {
-    return await box.getAllAsync();
+    return box.getAllAsync();
   }
 }
 
 base mixin GetByIdMixin<T> on Repository<T> {
   Future<T?> getById(int id) async {
-    return await box.getAsync(id);
+    return box.getAsync(id);
   }
 }
 
