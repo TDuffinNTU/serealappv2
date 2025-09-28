@@ -4,36 +4,6 @@
   "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
   "entities": [
     {
-      "id": "1:6966765353508670803",
-      "lastPropertyId": "2:4351513057709518084",
-      "name": "DailyLog",
-      "properties": [
-        {
-          "id": "1:8237253798083469613",
-          "name": "id",
-          "type": 6,
-          "flags": 1
-        },
-        {
-          "id": "2:4351513057709518084",
-          "name": "date",
-          "type": 10
-        }
-      ],
-      "relations": [
-        {
-          "id": "1:2245591407547270532",
-          "name": "notes",
-          "targetId": "2:7332215556758251295"
-        },
-        {
-          "id": "2:8797595981091640367",
-          "name": "tasks",
-          "targetId": "4:3757452903477784796"
-        }
-      ]
-    },
-    {
       "id": "2:7332215556758251295",
       "lastPropertyId": "5:1115515278882702096",
       "name": "Note",
@@ -69,7 +39,7 @@
         {
           "id": "3:1943831781983577351",
           "name": "logs",
-          "targetId": "1:6966765353508670803"
+          "targetId": "6:2008752303034896166"
         }
       ]
     },
@@ -100,7 +70,7 @@
           "indexId": "1:2367998238096734980",
           "type": 11,
           "flags": 520,
-          "relationTarget": "DailyLog"
+          "relationTarget": "DailyLogDto"
         }
       ],
       "relations": []
@@ -128,23 +98,67 @@
         }
       ],
       "relations": []
+    },
+    {
+      "id": "6:2008752303034896166",
+      "lastPropertyId": "3:6602947955811216568",
+      "name": "DailyLogDto",
+      "properties": [
+        {
+          "id": "1:1598895473784986213",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:54050028495580587",
+          "name": "guid",
+          "indexId": "3:6434570693191632903",
+          "type": 9,
+          "flags": 2048
+        },
+        {
+          "id": "3:6602947955811216568",
+          "name": "date",
+          "type": 10
+        }
+      ],
+      "relations": [
+        {
+          "id": "6:5894798526120419090",
+          "name": "notes",
+          "targetId": "2:7332215556758251295"
+        },
+        {
+          "id": "7:2763210543765881563",
+          "name": "tasks",
+          "targetId": "4:3757452903477784796"
+        }
+      ]
     }
   ],
-  "lastEntityId": "5:5519603960948788784",
-  "lastIndexId": "1:2367998238096734980",
-  "lastRelationId": "3:1943831781983577351",
+  "lastEntityId": "6:2008752303034896166",
+  "lastIndexId": "3:6434570693191632903",
+  "lastRelationId": "7:2763210543765881563",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
   "modelVersionParserMinimum": 5,
   "retiredEntityUids": [
-    8001518058728161038
+    8001518058728161038,
+    6966765353508670803
   ],
   "retiredIndexUids": [],
   "retiredPropertyUids": [
     2629771665953402958,
     8122752821204491772,
-    8070446816782336214
+    8070446816782336214,
+    8237253798083469613,
+    4351513057709518084,
+    3655911302838603652
   ],
-  "retiredRelationUids": [],
+  "retiredRelationUids": [
+    2245591407547270532,
+    8797595981091640367
+  ],
   "version": 1
 }

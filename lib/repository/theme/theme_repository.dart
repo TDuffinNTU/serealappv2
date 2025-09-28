@@ -13,6 +13,7 @@ final class ThemeRepository extends Repository<SerealThemeDto>
   Future<SerealThemeDto?> getTheme() async {
     final record = (await box.getAllAsync()).firstOrNull;
     logInfo('Search response: $record');
+
     return record;
   }
 
@@ -20,6 +21,7 @@ final class ThemeRepository extends Repository<SerealThemeDto>
   Future<void> saveObject(SerealThemeDto obj) async {
     obj.id = (await getTheme())?.id ?? 0;
     logInfo('Storing obj: $obj');
+
     return super.saveObject(obj);
   }
 }

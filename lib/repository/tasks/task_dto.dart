@@ -4,7 +4,8 @@ import 'package:serealappv2/repository/daily_logs/daily_log_dto.dart';
 @Entity()
 class Task {
   Task({
-    required this.task, this.completed = false,
+    required this.task,
+    this.completed = false,
   });
 
   @Id()
@@ -13,5 +14,5 @@ class Task {
   final bool completed;
   final String task;
 
-  final ToOne<DailyLog> logs = ToOne();
+  final ToOne<DailyLogDto> logs = ToOne();
 }
