@@ -13,4 +13,9 @@ class SerealThemeDto {
 
   final int color;
   final int mode;
+
+  @override
+  String toString() {
+    return 'SerealThemeDto: {Color: $color, ThemeMode: $mode}';
+  }
 }
