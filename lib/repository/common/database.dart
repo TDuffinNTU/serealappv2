@@ -7,7 +7,7 @@ part 'database.g.dart';
 
 @Riverpod(keepAlive: true)
 Future<Store> getObjectBoxStore(Ref ref) async {
-    final dir = await getApplicationDocumentsDirectory();
+  final dir = await getApplicationDocumentsDirectory();
   final store = await openStore(directory: p.join(dir.path, 'sereal_db'));
   return store;
 }

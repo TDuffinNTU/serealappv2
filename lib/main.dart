@@ -20,6 +20,22 @@ void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
 
+/// Eagerly load providers by watching their state before loading [MaterialApp].
+///
+/// Read more: https://riverpod.dev/docs/how_to/eager_initialization
+class _EagerProviders extends ConsumerWidget {
+  const _EagerProviders({required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    // Load theme to avoid flash of "default" theme.
+    ref.watch(themeServiceProvider);
+    return child;
+  }
+}
+
 class MyApp extends ConsumerWidget with SerealLoggerMixin {
   const MyApp({super.key});
 
@@ -28,14 +44,15 @@ class MyApp extends ConsumerWidget with SerealLoggerMixin {
     unawaited(SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge));
 
     final theme = ref.watch(themeServiceProvider);
-    logInfo(theme.toString());
 
-    return MaterialApp(
-      title: 'Sereal',
-      theme: lightTheme(theme.color),
-      darkTheme: darkTheme(theme.color),
-      themeMode: theme.mode,
-      home: const HomeScreen(),
+    return _EagerProviders(
+      child: MaterialApp(
+        title: 'Sereal',
+        theme: lightTheme(theme.color),
+        darkTheme: darkTheme(theme.color),
+        themeMode: theme.mode,
+        home: const HomeScreen(),
+      ),
     );
   }
 }
