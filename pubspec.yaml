@@ -32,10 +32,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  #cupertino_icons: ^1.0.2
   flutter_carousel_widget: ^3.1.0
   jiffy: ^6.2.1
   uuid: ^4.3.3
@@ -49,9 +45,9 @@ dependencies:
   objectbox: ^4.3.0
   objectbox_flutter_libs: ^4.3.0
   path_provider: ^2.1.5
-  
-
   path: any
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -64,17 +60,6 @@ dev_dependencies:
   riverpod_lint: ^3.0.0-dev.17
   very_good_analysis: ^10.0.0
 
-# Until objectbox gets their shit together.
-dependency_overrides: 
-  objectbox_generator:
-    git:
-      url: https://github.com/sumitsharansatsangi/objectbox-generator.git
-  objectbox:
-    git:
-      url: https://github.com/sumitsharansatsangi/objectbox.git
-
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
