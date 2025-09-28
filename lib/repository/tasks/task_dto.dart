@@ -2,8 +2,8 @@ import 'package:objectbox/objectbox.dart';
 import 'package:serealappv2/repository/daily_logs/daily_log_dto.dart';
 
 @Entity()
-class Task {
-  Task({
+class TaskDto {
+  TaskDto({
     required this.task,
     this.completed = false,
   });

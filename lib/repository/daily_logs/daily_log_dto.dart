@@ -20,6 +20,6 @@ class DailyLogDto {
   @Property(type: PropertyType.date)
   final DateTime date;
 
-  final ToMany<Note> notes = ToMany();
-  final ToMany<Task> tasks = ToMany();
+  final ToMany<NoteDto> notes = ToMany();
+  final ToMany<TaskDto> tasks = ToMany();
 }

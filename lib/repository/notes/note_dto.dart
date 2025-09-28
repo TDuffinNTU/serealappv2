@@ -3,8 +3,8 @@ import 'package:objectbox/objectbox.dart';
 import 'package:serealappv2/repository/daily_logs/daily_log_dto.dart';
 
 @Entity()
-class Note {
-  Note({
+class NoteDto {
+  NoteDto({
     required this.title,
     required this.content,
     required this.created,
