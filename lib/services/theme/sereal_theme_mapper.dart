@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:serealappv2/presentation/theme/models/sereal_theme_model.dart';
+import 'package:serealappv2/presentation/theme/models/sereal_theme.dart';
 import 'package:serealappv2/repository/theme/sereal_theme_dto.dart';
 
 final class SerealThemeMapper {

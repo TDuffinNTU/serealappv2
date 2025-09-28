@@ -8,9 +8,9 @@ import 'package:serealappv2/presentation/common/widgets/sereal_scaffold.dart';
 import 'package:serealappv2/presentation/notes_tab/widgets/notes_tab.dart';
 import 'package:serealappv2/presentation/theme/widgets/brightness_toggle_button.dart';
 import 'package:serealappv2/presentation/theme/widgets/color_picker_dialog_button.dart';
-import 'package:serealappv2/services/theme/sereal_flex_theme.dart';
 import 'package:serealappv2/services/theme/sereal_theme_service.dart';
-import 'package:serealappv2/utils/sereal_logger.dart';
+import 'package:serealappv2/utils/constants/theme_constants.dart';
+import 'package:serealappv2/utils/logging/sereal_logger.dart';
 // import 'presentation/notes_tab/widgets/notes_tab.dart';
 // import 'presentation/today_tab/widgets/today_tab.dart';
 
@@ -32,8 +32,8 @@ class MyApp extends ConsumerWidget with SerealLoggerMixin {
 
     return MaterialApp(
       title: 'Sereal',
-      theme: SerealFlexTheme.lightTheme(theme.color),
-      darkTheme: SerealFlexTheme.darkTheme(theme.color),
+      theme: lightTheme(theme.color),
+      darkTheme: darkTheme(theme.color),
       themeMode: theme.mode,
       home: const HomeScreen(),
     );

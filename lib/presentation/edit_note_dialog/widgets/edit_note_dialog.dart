@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:serealappv2/presentation/theme/utils/sizing.dart' as sizing;
+import 'package:serealappv2/utils/constants/sizing_constants.dart' as sizing;
 
 class EditNoteDialog extends StatelessWidget {
   const EditNoteDialog({required this.heroTag, required this.text, super.key});

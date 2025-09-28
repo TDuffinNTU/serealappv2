@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:serealappv2/services/theme/sereal_flex_theme.dart';
+import 'package:serealappv2/utils/constants/theme_constants.dart';
 
-part 'sereal_theme_model.freezed.dart';
+part 'sereal_theme.freezed.dart';
 
 @freezed
 class SerealTheme with _$SerealTheme {
@@ -12,12 +12,13 @@ class SerealTheme with _$SerealTheme {
   });
 
   factory SerealTheme.defaultTheme() => const SerealTheme(
-        color: SerealFlexTheme.defaultSeedColor,
+        color: defaultSeedColor,
         mode: ThemeMode.system,
       );
 
   @override
   final Color color;
+
   @override
   final ThemeMode mode;
 }

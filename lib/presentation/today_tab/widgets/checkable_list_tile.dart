@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:serealappv2/utils/string_extensions.dart';
+import 'package:serealappv2/utils/extensions/string_extensions.dart';
 
 class CheckableLogTile extends StatelessWidget {
   const CheckableLogTile({

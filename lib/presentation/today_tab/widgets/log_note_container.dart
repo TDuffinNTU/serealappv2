@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:serealappv2/presentation/theme/utils/sizing.dart' as sizing;
+import 'package:serealappv2/utils/constants/sizing_constants.dart' as sizing;
 
 class LogNoteContainer extends StatelessWidget {
   const LogNoteContainer({required this.text, required this.onNoteTapped, super.key});

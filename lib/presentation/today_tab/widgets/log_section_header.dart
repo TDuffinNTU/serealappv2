@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:serealappv2/presentation/theme/utils/sizing.dart' as sizing;
+import 'package:serealappv2/utils/constants/sizing_constants.dart' as sizing;
 
 class LogSectionHeader extends StatelessWidget {
-  const LogSectionHeader({required this.title, required this.onAdd, super.key,
+  const LogSectionHeader({
+    required this.title,
+    required this.onAdd,
+    super.key,
   });
 
   final VoidCallback? onAdd;
