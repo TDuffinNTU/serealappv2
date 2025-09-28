@@ -5,15 +5,9 @@ import 'package:serealappv2/objectbox.g.dart';
 
 part 'database.g.dart';
 
-Store? _store;
-
-@riverpod
+@Riverpod(keepAlive: true)
 Future<Store> getObjectBoxStore(Ref ref) async {
-  var maybeStore = _store;
-  if (maybeStore == null) {
     final dir = await getApplicationDocumentsDirectory();
-    maybeStore = await openStore(directory: p.join(dir.path, 'todo_notes_db'));
-    _store = maybeStore;
-  }
-  return maybeStore;
+  final store = await openStore(directory: p.join(dir.path, 'sereal_db'));
+  return store;
 }
