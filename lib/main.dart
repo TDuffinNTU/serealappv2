@@ -8,7 +8,7 @@ import 'package:serealappv2/presentation/common/widgets/sereal_scaffold.dart';
 import 'package:serealappv2/presentation/notes_tab/widgets/notes_tab.dart';
 import 'package:serealappv2/presentation/theme/widgets/brightness_toggle_button.dart';
 import 'package:serealappv2/presentation/theme/widgets/color_picker_dialog_button.dart';
-import 'package:serealappv2/services/theme/sereal_theme_service.dart';
+import 'package:serealappv2/services/theme/service/sereal_theme_service.dart';
 import 'package:serealappv2/utils/constants/theme_constants.dart';
 import 'package:serealappv2/utils/logging/sereal_logger.dart';
 // import 'presentation/notes_tab/widgets/notes_tab.dart';

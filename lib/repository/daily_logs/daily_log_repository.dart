@@ -1,21 +1,33 @@
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:serealappv2/objectbox.g.dart';
+import 'package:serealappv2/repository/common/database.dart';
 import 'package:serealappv2/repository/common/repository.dart';
 import 'package:serealappv2/repository/daily_logs/daily_log_dto.dart';
 import 'package:serealappv2/utils/logging/sereal_logger.dart';
+
+part 'daily_log_repository.g.dart';
 
 final class DailyLogRepository extends Repository<DailyLogDto>
     with GetAllMixin, SaveObjectMixin, SerealLoggerMixin {
   DailyLogRepository(super.store);
 
-  Future<DailyLogDto?> getForDate(DateTime date) {
+  @override
+  Future<List<DailyLogDto>> getAll() async {
+    final records = await super.getAll();
+    logInfo('Got records: $records');
+    return records;
+  }
+
+  Future<List<DailyLogDto>> getBetweenDates(DateTime start, DateTime end) {
     return box
         .query(
-          DailyLogDto_.date.equalsDate(
-            date.toUtc(),
+          DailyLogDto_.date.betweenDate(
+            start.toUtc(),
+            end.toUtc(),
           ),
         )
         .build()
-        .findFirstAsync();
+        .findAsync();
   }
 
   @override
@@ -32,4 +44,9 @@ final class DailyLogRepository extends Repository<DailyLogDto>
 
     return super.saveObject(obj);
   }
+}
+
+@riverpod
+FutureOr<DailyLogRepository> dailyLogRepository(Ref ref) async {
+  return DailyLogRepository(await ref.watch(getObjectBoxStoreProvider.future));
 }

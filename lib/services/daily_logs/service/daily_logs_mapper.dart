@@ -1,7 +1,7 @@
 import 'package:serealappv2/repository/daily_logs/daily_log_dto.dart';
 import 'package:serealappv2/repository/notes/note_dto.dart';
 import 'package:serealappv2/repository/tasks/task_dto.dart';
-import 'package:serealappv2/services/daily_logs/daily_log_model.dart';
+import 'package:serealappv2/services/daily_logs/models/daily_log.dart';
 
 class DailyLogsMapper {
   static DailyLog toModel(DailyLogDto value) {
@@ -34,4 +34,12 @@ class DailyLogsMapper {
         ),
       );
   }
+}
+
+/// Maps a list of [IN] objects to a list of [OUT] objects.
+List<OUT> listMapper<IN, OUT>(
+  List<IN> input,
+  OUT Function(IN value) mapper,
+) {
+  return input.map(mapper).toList();
 }

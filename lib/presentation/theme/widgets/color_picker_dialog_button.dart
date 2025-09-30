@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:serealappv2/services/theme/sereal_theme_service.dart';
+import 'package:serealappv2/services/theme/service/sereal_theme_service.dart';
 
 class ColorPickerDialogButton extends ConsumerStatefulWidget {
   const ColorPickerDialogButton({
@@ -11,10 +11,12 @@ class ColorPickerDialogButton extends ConsumerStatefulWidget {
   });
 
   @override
-  ConsumerState<ColorPickerDialogButton> createState() => _ColorPickerDialogButtonState();
+  ConsumerState<ColorPickerDialogButton> createState() =>
+      _ColorPickerDialogButtonState();
 }
 
-class _ColorPickerDialogButtonState extends ConsumerState<ColorPickerDialogButton> {
+class _ColorPickerDialogButtonState
+    extends ConsumerState<ColorPickerDialogButton> {
   late Color col;
 
   @override
@@ -29,7 +31,8 @@ class _ColorPickerDialogButtonState extends ConsumerState<ColorPickerDialogButto
             mainAxisSize: MainAxisSize.min,
             children: [
               ColorPicker(
-                pickerAreaBorderRadius: const BorderRadius.all(Radius.elliptical(16, 16)),
+                pickerAreaBorderRadius:
+                    const BorderRadius.all(Radius.elliptical(16, 16)),
                 pickerColor: theme.color,
                 onColorChanged: (c) => setState(
                   () {

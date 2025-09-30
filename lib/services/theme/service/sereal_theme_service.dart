@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:serealappv2/presentation/theme/models/sereal_theme.dart';
 import 'package:serealappv2/repository/theme/theme_repository.dart';
-import 'package:serealappv2/services/theme/sereal_theme_mapper.dart';
+import 'package:serealappv2/services/theme/models/sereal_theme.dart';
+import 'package:serealappv2/services/theme/service/sereal_theme_mapper.dart';
 import 'package:serealappv2/utils/logging/sereal_logger.dart';
 
 part 'sereal_theme_service.g.dart';

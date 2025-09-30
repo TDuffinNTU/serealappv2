@@ -1,9 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'daily_log_model.freezed.dart';
+part 'daily_log.freezed.dart';
 
 @freezed
-class DailyLog with _$DailyLog {
+final class DailyLog with _$DailyLog {
   DailyLog({
     required this.guid,
     required this.date,
@@ -11,9 +11,16 @@ class DailyLog with _$DailyLog {
     required this.tasks,
   });
 
+  @override
   final String guid;
+
+  @override
   final DateTime date;
+
+  @override
   final List<Note> notes;
+
+  @override
   final List<Task> tasks;
 }
 

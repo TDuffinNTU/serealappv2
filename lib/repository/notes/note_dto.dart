@@ -23,5 +23,5 @@ class NoteDto {
   @Property(type: PropertyType.date)
   final DateTime edited;
 
-  ToMany<DailyLogDto> logs = ToMany<DailyLogDto>();
+  final ToMany<DailyLogDto> logs = ToMany<DailyLogDto>();
 }
