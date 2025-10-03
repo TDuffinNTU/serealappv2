@@ -9,13 +9,19 @@ extension DateTimeExtensions on DateTime {
 
   String get databaseType => dateOnly.toIso8601String();
 
-  static DateTime today() => DateTime.now();
+  static DateTime get today => DateTime.now();
 
-  static DateTime tomorrow() {
+  static DateTime get tomorrow {
     return DateTime.now().dateOnly.add(const Duration(days: 1));
   }
 
-  static DateTime yesterday() {
+  static DateTime get yesterday {
     return DateTime.now().dateOnly.subtract(const Duration(days: 1));
   }
 }
+
+DateTime today = DateTime.now();
+
+DateTime tomorrow = DateTime.now().dateOnly.add(const Duration(days: 1));
+
+DateTime yesterday = DateTime.now().dateOnly.subtract(const Duration(days: 1));

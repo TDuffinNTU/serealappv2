@@ -1,4 +1,5 @@
 import 'package:objectbox/objectbox.dart';
+import 'package:serealappv2/utils/extensions/future_extensions.dart';
 
 base class Repository<T> {
   Repository(this.store) : box = Box<T>(store);
@@ -24,6 +25,12 @@ base mixin GetByIdMixin<T> on Repository<T> {
 
 base mixin SaveObjectMixin<T> on Repository<T> {
   Future<void> saveObject(T obj) async {
-    await box.putAsync(obj);
+    return box.putAsync(obj).discardValue;
+  }
+}
+
+base mixin DeleteAllMixin<T> on Repository<T> {
+  Future<void> deleteAll() async {
+    return box.removeAllAsync().discardValue;
   }
 }

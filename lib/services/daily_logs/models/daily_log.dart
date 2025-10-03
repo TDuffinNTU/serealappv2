@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:uuid/uuid.dart';
 
 part 'daily_log.freezed.dart';
 
@@ -10,6 +11,13 @@ final class DailyLog with _$DailyLog {
     required this.notes,
     required this.tasks,
   });
+
+  factory DailyLog.defaults({required DateTime date}) => DailyLog(
+        guid: const Uuid().v1(),
+        date: date,
+        notes: [],
+        tasks: [],
+      );
 
   @override
   final String guid;

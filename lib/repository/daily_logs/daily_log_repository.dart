@@ -8,7 +8,7 @@ import 'package:serealappv2/utils/logging/sereal_logger.dart';
 part 'daily_log_repository.g.dart';
 
 final class DailyLogRepository extends Repository<DailyLogDto>
-    with GetAllMixin, SaveObjectMixin, SerealLoggerMixin {
+    with GetAllMixin, SaveObjectMixin, SerealLoggerMixin, DeleteAllMixin {
   DailyLogRepository(super.store);
 
   @override

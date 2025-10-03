@@ -9,7 +9,9 @@ part 'daily_logs_service.g.dart';
 @riverpod
 class DailyLogsService extends _$DailyLogsService {
   @override
-  FutureOr<List<DailyLog>> build(DailyLogFilter filter) async {
+  FutureOr<List<DailyLog>> build({
+    DailyLogFilter filter = const AllLogsFilter(),
+  }) async {
     final repo = await ref.watch(dailyLogRepositoryProvider.future);
 
     return listMapper(
@@ -23,5 +25,10 @@ class DailyLogsService extends _$DailyLogsService {
       },
       DailyLogsMapper.toModel,
     );
+  }
+
+  Future<void> deleteAll() async {
+    final repo = await ref.read(dailyLogRepositoryProvider.future);
+    return repo.deleteAll();
   }
 }
