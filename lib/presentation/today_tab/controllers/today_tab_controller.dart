@@ -6,7 +6,7 @@ import 'package:serealappv2/utils/extensions/datetime_extensions.dart';
 
 part 'today_tab_controller.g.dart';
 
-@riverpod
+@Riverpod()
 class TodayTabController extends _$TodayTabController {
   @override
   Future<List<DailyLog>> build() async {

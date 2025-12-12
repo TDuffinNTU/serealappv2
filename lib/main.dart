@@ -8,7 +8,7 @@ import 'package:serealappv2/presentation/common/widgets/sereal_scaffold.dart';
 import 'package:serealappv2/presentation/notes_tab/widgets/notes_tab.dart';
 import 'package:serealappv2/presentation/theme/widgets/brightness_toggle_button.dart';
 import 'package:serealappv2/presentation/theme/widgets/color_picker_dialog_button.dart';
-import 'package:serealappv2/presentation/today_tab/widgets/today_tab.dart';
+import 'package:serealappv2/presentation/today_tab/today_tab.dart';
 import 'package:serealappv2/services/theme/service/sereal_theme_service.dart';
 import 'package:serealappv2/utils/constants/theme_constants.dart';
 import 'package:serealappv2/utils/logging/sereal_logger.dart';
@@ -70,16 +70,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   final List<Widget> homeScreenTabs = [
     const NotesTab(),
     const TodayTab(),
-    const NotesTab(),
-    // HistoryTab(),
+    const Placeholder(),
   ];
 
-  late Widget selectedTab = homeScreenTabs[1];
+  int selectedTab = 0;
 
-  void selectTab(int tab) {
-    //return;
-    setState(() => selectedTab = homeScreenTabs[tab]);
-  }
+  void selectTab(int tab) {}
 
   @override
   Widget build(BuildContext context) {
@@ -89,10 +85,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ColorPickerDialogButton(),
       ],
       title: 'Hello world!',
-      body: const NotesTab(),
+      body: homeScreenTabs[selectedTab],
       bottomNavigationBar: SerealNavigationBar(
-        onTabSelected: selectTab,
-        initialTab: 0,
+        onTabSelected: (tab) => setState(() => selectedTab = tab),
+        initialTab: selectedTab,
       ),
     );
   }

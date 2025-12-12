@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:serealappv2/presentation/theme/controllers/theme_controller.dart';
 import 'package:serealappv2/services/theme/service/sereal_theme_service.dart';
 
 class BrighnessToggleButton extends ConsumerWidget {
@@ -8,13 +9,8 @@ class BrighnessToggleButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return IconButton(
-      onPressed: () => ref.read(themeServiceProvider.notifier).update(
-            (old) => old.copyWith(
-              mode: old.mode == ThemeMode.light
-                  ? ThemeMode.dark
-                  : ThemeMode.light,
-            ),
-          ),
+      onPressed: () =>
+          ref.read(themeControllerProvider.notifier).toggleBrightness(),
       icon: Icon(
         ref.watch(themeServiceProvider).mode == ThemeMode.light
             ? Icons.sunny
