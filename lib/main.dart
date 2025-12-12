@@ -8,6 +8,7 @@ import 'package:serealappv2/presentation/common/widgets/sereal_scaffold.dart';
 import 'package:serealappv2/presentation/notes_tab/widgets/notes_tab.dart';
 import 'package:serealappv2/presentation/theme/widgets/brightness_toggle_button.dart';
 import 'package:serealappv2/presentation/theme/widgets/color_picker_dialog_button.dart';
+import 'package:serealappv2/presentation/today_tab/widgets/today_tab.dart';
 import 'package:serealappv2/services/theme/service/sereal_theme_service.dart';
 import 'package:serealappv2/utils/constants/theme_constants.dart';
 import 'package:serealappv2/utils/logging/sereal_logger.dart';
@@ -68,15 +69,16 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   final List<Widget> homeScreenTabs = [
     const NotesTab(),
-    // TodayTab(),
+    const TodayTab(),
+    const NotesTab(),
     // HistoryTab(),
   ];
 
   late Widget selectedTab = homeScreenTabs[1];
 
   void selectTab(int tab) {
-    return;
-    // setState(() => selectedTab = homeScreenTabs[tab]);
+    //return;
+    setState(() => selectedTab = homeScreenTabs[tab]);
   }
 
   @override

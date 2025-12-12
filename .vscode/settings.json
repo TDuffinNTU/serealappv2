@@ -1,12 +1,13 @@
 {
-    "dart.lineLength": 80,
-    "editor.rulers": [
-        80
-    ],
-    "[dart]": {
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-            "source.fixAll": "explicit"
-        },
-    },
+  "dart.lineLength": 80,
+  "editor.rulers": [
+    80
+  ],
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit"
+    }
+  },
+  "dart.flutterSdkPath": ".fvm/versions/stable"
 }

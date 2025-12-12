@@ -2,18 +2,17 @@ include:
   - package:flutter_lints/flutter.yaml
   - package:very_good_analysis/analysis_options.yaml
 analyzer:
-  exclude: [lib/**.g.dart, lib/**.freezed.dart, pubspec.yaml] 
-  plugins:
-    - custom_lint
-  errors: 
-    public_member_api_docs: false
+  errors:
+    public_member_api_docs: ignore
     lines_longer_than_80_chars: ignore
-    avoid_positional_boolean_parameters: ignore
-    flutter_style_todos: ignore
-    
-linter:
-  rules:
-  - invalid_annotation_target: false
-  - public_member_api_docs: false
-  - todo: false
 
+  exclude: [lib/**.g.dart, lib/**.freezed.dart, pubspec.yaml] 
+    
+# linter:
+#   rules:
+#   - invalid_annotation_target: false
+#   - public_member_api_docs: false
+#   - todo: false
+
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options

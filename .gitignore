@@ -139,3 +139,6 @@ app.*.symbols
 # Flutter build runner files
 *.freezed.dart
 *.g.dart
+
+# FVM Version Cache
+.fvm/
